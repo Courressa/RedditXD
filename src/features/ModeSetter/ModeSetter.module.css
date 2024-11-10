@@ -1,0 +1,45 @@
+.modeSetter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Dark-Light Toggle*/
+.toggle {
+    background-color: rgb(255, 254, 191);
+    border: 1px solid #aaa;
+    border-radius: 99px;
+    width: 50px;
+    height: 30px;
+    transition: background-color 0.1s ease, border-color 0.2s ease;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px black;
+    position: relative;
+}
+
+.toggle .thumb {
+    height: 20px;
+    width: 20px;
+    background-color: rgb(228, 186, 0);
+    border-radius: 99px;
+    transform: translateX(0);
+    transition: left 0.15s ease;
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.toggle.darkMode {
+    background-color: rgb(3, 3, 3);
+}
+
+.toggle:hover {
+    background-color: rgb(214, 213, 171);
+}
+
+.toggle.darkMode .thumb {
+    left: calc(50px - 25px);
+    background-color: rgb(48, 48, 48);
+}

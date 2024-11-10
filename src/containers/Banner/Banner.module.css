@@ -1,0 +1,34 @@
+.banner {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: 3rem;
+    border-bottom: 0.1rem solid black;
+    align-items: center;
+}
+
+.logo {
+    display: flex; 
+    justify-content: start;
+    margin-left: 0.5rem;
+    
+}
+
+.logo img {
+    width: 100%;
+    height: 2.7rem;
+}
+
+.logo h1 {
+    align-content: center;
+}
+
+.searchBarComp {
+    width: 18rem;
+}
+
+.modeSetterComp {
+    margin-right: 0.8rem;
+}

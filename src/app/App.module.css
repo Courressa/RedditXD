@@ -1,0 +1,14 @@
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.app {
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+}

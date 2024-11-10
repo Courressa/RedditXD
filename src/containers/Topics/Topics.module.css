@@ -1,0 +1,17 @@
+.topics {
+    display: flex;
+    background-color: grey;
+    position: sticky;
+    top: 3rem;
+    padding: 1rem;
+    width: 17%;
+    height: 100vh;
+    flex-direction: column;
+}
+
+section {
+    
+    background-color: aqua;
+    margin: 1rem;
+    padding: 1rem;
+}
