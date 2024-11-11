@@ -8,11 +8,30 @@
 }
 
 .media img {
-    width: 20rem;
+    width: 30rem;
     height: 100%;
 }
 
 .media video {
     width: 100%;
     height: 14rem;
+}
+
+.richVideo {
+    display: flex;
+    flex-direction: column;
+}
+
+.richVideo img {
+    margin-bottom: 1rem;
+}
+
+.postHeader, .postBody {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.postHeader h4 {
+    align-content: center;
 }

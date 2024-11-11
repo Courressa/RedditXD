@@ -9,7 +9,7 @@
     flex-direction: column;
 }
 
-section {
+.topics section {
     
     background-color: aqua;
     margin: 1rem;

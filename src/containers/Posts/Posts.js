@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectPopular, loadPopular } from "./postsSlice";
+import { selectPopular, loadPopular, loadingPopular } from "./postsSlice";
 import { Post } from "../../features/Post/Post"
 import styles from "./Posts.module.css";
 
@@ -9,15 +9,18 @@ import styles from "./Posts.module.css";
 
 function Posts() {
     const popularData = useSelector(selectPopular);
+    const loading = useSelector(loadingPopular);
     const dispatch = useDispatch();
     
 
     useEffect(() => {
         dispatch(loadPopular());
     }, []);
-    console.log("not sending for popular info", popularData);
 
-
+    if (loading) {
+        return <h2>Loading...</h2>
+    }
+    console.log(popularData);
     return (
         <div className={styles.posts}>
             {popularData.map((postArr, index) => (
