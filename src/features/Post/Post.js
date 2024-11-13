@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from "react";
-import styles from "./Post.module.css"
+import styles from "./Post.module.css";
 import Hls from 'hls.js';
+import ArrowUp from "../svg_icons/ArrowUp";
+import ArrowDown from "../svg_icons/ArrowDown";
+
 
 function Post({post}) {
     let prevThumbnail;
@@ -41,7 +44,7 @@ function Post({post}) {
         //shows image
         if (post.data.post_hint === "image" ) {
             const fetchedImage = post.data.url;
-            prevThumbnail = <img src={fetchedImage}/>;
+            prevThumbnail = <img src={fetchedImage} alt/>;
         } else if (post.data.post_hint === "hosted:video") {
             prevThumbnail = <video 
                 ref={videoRef} 
@@ -105,7 +108,7 @@ function Post({post}) {
 
         return output;
     }
-    
+
     return (
         <div className={styles.post}>
             <section className={styles.postHeader}>
@@ -115,11 +118,11 @@ function Post({post}) {
             
             <div className={styles.media}>{prevThumbnail}</div>
             <div className={styles.postBody}>
-                <section>
-                    <div>
-                        <button></button>
+                <section className={styles.scoreAndComments}>
+                    <div className={styles.scoreAndArrows}>
+                        <ArrowUp />
                         <h3>{kNumberFormatter(post.data.score)}</h3>
-                        <button></button>
+                        <ArrowDown />
                     </div>
                     <div>
                         <h3>{kNumberFormatter(post.data.num_comments)} comments</h3>

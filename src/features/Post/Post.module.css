@@ -1,10 +1,12 @@
 .post {
-    background-color: bisque;
+    background-color: aliceblue;
     height: 100%;
     margin: 1rem;
     padding: 2rem;
     width: 70rem;
     justify-items: center;
+    border-bottom: 0.01rem solid rgb(177, 177, 177);
+    border-radius: 2rem;
 }
 
 .media img {
@@ -32,6 +34,22 @@
     width: 100%;
 }
 
-.postHeader h4 {
+.postHeader h4, .scoreAndComments div {
     align-content: center;
+}
+
+.scoreAndComments {
+    display: flex;
+    justify-content: space-between;
+    width:23rem;
+}
+
+.scoreAndArrows {
+    display: flex;
+    justify-content: space-around;
+    width: 10rem;
+    align-items: center;
+    background-color: rgb(209, 209, 209);
+    border-radius: 2rem;
+    height: 3rem;
 }

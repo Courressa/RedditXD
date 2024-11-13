@@ -1,0 +1,12 @@
+.arrow {
+    display: flex;
+    color: rgba(137, 43, 226, 0.178);
+    width: 2rem;
+    height: auto;
+    
+}
+
+.arrow path {
+    stroke: black;
+    stroke-width: 0.3rem;
+}
