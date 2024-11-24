@@ -7,11 +7,23 @@
     width: 17%;
     height: 100vh;
     flex-direction: column;
+    overflow-y: scroll;
+    font-size: 0.8rem;
 }
 
-.topics section {
-    
+.topics h4 {
+    display: flex;
+    text-align: left;
     background-color: aqua;
-    margin: 1rem;
+    margin: 1rem 1rem 0rem 1rem;
     padding: 1rem;
+}
+
+.topics h4:hover {
+    background-color: blue;
+    cursor: pointer;
+}
+
+.topics h4:active {
+    background-color: aliceblue;
 }

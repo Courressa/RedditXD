@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPopular, loadPopular, loadingPopular } from "./postsSlice";
 import { Post } from "../../features/Post/Post"

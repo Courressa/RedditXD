@@ -44,7 +44,7 @@ function Post({post}) {
         //shows image
         if (post.data.post_hint === "image" ) {
             const fetchedImage = post.data.url;
-            prevThumbnail = <img src={fetchedImage} alt/>;
+            prevThumbnail = <img src={fetchedImage} />;
         } else if (post.data.post_hint === "hosted:video") {
             prevThumbnail = <video 
                 ref={videoRef} 
@@ -77,7 +77,7 @@ function Post({post}) {
     const kNumberFormatter = (num) => {
         let formatConverter;
         if (num >= 1000) {
-            formatConverter = (num / 1000).toFixed(1) + 'k';
+            formatConverter = (num / 1000).toFixed(1) + 'K';
             return formatConverter;
         } else {
             return num;
@@ -130,7 +130,7 @@ function Post({post}) {
                     
                 </section>
                 <section>
-                    <h4>{post.data.author}</h4>
+                    <h3>{post.data.author}</h3>
                 </section>
             </div>
         </div>

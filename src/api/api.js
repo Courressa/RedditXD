@@ -21,7 +21,7 @@ export async function getPopular() {
     }
 };
 
-export async function getRedditGalleryImage(image) {
+/*export async function getRedditGalleryImage(image) {
     const RedditGalleryImageEndpoint = `${image}.json`;
     const urlToFetch = `${RedditGalleryImageEndpoint}`;
 
@@ -35,6 +35,26 @@ export async function getRedditGalleryImage(image) {
             const redditGalleryImage = jsonResponse.data.children;
             
             return redditGalleryImage;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};*/
+
+export async function getTopics() {
+    const topicsEndpoint = "/r/business.json";
+    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+
+    try {
+        const response = await fetch(urlToFetch, {
+            method: "GET"
+        })
+
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            const topics = jsonResponse.data;
+            
+            return topics;
         }
     } catch (error) {
         console.log(error);
