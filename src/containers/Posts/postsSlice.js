@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getPopular } from "../../api/api";
+import { getPopular, getTopics } from "../../api/api";
 
 export const loadPopular = createAsyncThunk(
     'posts/loadPopular',
@@ -9,6 +9,16 @@ export const loadPopular = createAsyncThunk(
         return popularObj
     }
 );
+
+export const loadSelectedTopicPost = createAsyncThunk(
+    'topics/loadSelectedTopicPost',
+    async (topic) => {
+        const topicsObj = await getTopics(topic);
+        console.log("state topics", topicsObj);
+        return topicsObj;
+    }
+);
+
 
 const sliceOption = {
     name:'posts',
@@ -29,6 +39,16 @@ const sliceOption = {
                 state.isLoading = false;
                 state.hasError = false;
                 state.posts = action.payload;
+            }).addCase(loadSelectedTopicPost.pending, (state) => {
+                state.isLoading = true;
+                state.hasError = false;
+            }).addCase(loadSelectedTopicPost.rejected, (state) => {
+                state.isLoading = false;
+                state.hasError = true;
+            }).addCase(loadSelectedTopicPost.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.hasError = false;
+                state.posts = action.payload;
             })
     }
 }
@@ -37,5 +57,6 @@ export const postsSlice = createSlice(sliceOption);
 
 export const selectPopular = (state) => state.posts.posts;
 export const loadingPopular = (state) => state.posts.isLoading;
+export const errorFound = (state) => state.posts.hasError;
 
 export default postsSlice.reducer;

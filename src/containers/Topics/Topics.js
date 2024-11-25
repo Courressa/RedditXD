@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectTopics, loadTopics, loadingTopics } from "./topicsSlice";
+import { selectTopics, loadTopics, loadingTopics, collectFetchTopic } from "./topicsSlice";
 import { Topic } from "../../features/Topic/Topic";
 import styles from "./Topics.module.css";
 import { redditTopics } from "./listOfRedditTopics";
@@ -8,12 +8,13 @@ import { Home } from "../../features/svg_icons/Home";
 import { Popular } from "../../features/svg_icons/Popular";
 
 function Topics() {
-    const topicsListData = useSelector(selectTopics);
     const dispatch = useDispatch();
+    
+    const collectSelectedTopic = (topic) => {
+        dispatch(collectFetchTopic(topic));
+    };
 
-    useEffect(() => {
-        dispatch(loadTopics());
-    }, []);
+    
 
    /* let subtopic;
    redditMainTopics.map(topic =>
@@ -60,11 +61,12 @@ function Topics() {
                 <h4><Popular /> Popular</h4>
             </div>
             <h3>Topics</h3>
-            <div className={styles.mainTopics}>
+            <div className={styles.mappedMainTopics}>
                 {redditTopics.map((topicArr, index) => (
                     <Topic 
                         key={index}
                         topic={topicArr}
+                        collectSelectedTopic={collectSelectedTopic}
                     />
                 ))}
                 

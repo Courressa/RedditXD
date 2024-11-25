@@ -3,7 +3,7 @@
     background-color: grey;
     position: sticky;
     top: 3rem;
-    padding: 1rem;
+    padding: 0.2rem 1rem;
     width: 17%;
     height: 100vh;
     flex-direction: column;
@@ -26,4 +26,8 @@
 
 .topics h4:active {
     background-color: aliceblue;
+}
+
+.mappedMainTopics {
+    margin-bottom: 4rem;
 }

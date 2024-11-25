@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import styles from "./Topic.module.css";
 import { internetCultureSubTopics, gamesSubTopics, qAndAsSubTopics, technologySubTopics, popCultureSubTopics, moviesAndTVSubTopics } from "../../containers/Topics/listOfRedditTopics";
 
-function Topic({topic}) {
+function Topic({topic, collectSelectedTopic}) {
     let addSubtopic;
     if (topic.subtopics) {
         addSubtopic = topic.subtopics.map((subtopic, index) => (
             <h5 key={index} >{subtopic}</h5>
-    ));
+        ));
     }
 
     const [shouldDisplaySubTopic, setShouldDisplaySubTopic] = useState(false);
     const handleClick = (event) => {
         console.log("clicked", event.target.id);
-        if (shouldDisplaySubTopic == false) {
+        if (!addSubtopic) {
+            collectSelectedTopic(event.target.id);
+        } else if (shouldDisplaySubTopic == false) {
             setShouldDisplaySubTopic(true);
-        } else {
+        } else if (shouldDisplaySubTopic == true) {
             setShouldDisplaySubTopic(false);
         }
     }

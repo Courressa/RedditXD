@@ -41,8 +41,8 @@ export async function getPopular() {
     }
 };*/
 
-export async function getTopics() {
-    const topicsEndpoint = "/r/business.json";
+export async function getTopics(topic) {
+    const topicsEndpoint = `/r/${topic}.json`;
     const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
 
     try {
@@ -52,9 +52,11 @@ export async function getTopics() {
 
         if (response.ok) {
             const jsonResponse = await response.json();
-            const topics = jsonResponse.data;
+            const topics = jsonResponse.data.children;
             
             return topics;
+        } else {
+
         }
     } catch (error) {
         console.log(error);
