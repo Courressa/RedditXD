@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getPopular, getTopics } from "../../api/api";
+import { getPopular, getPostBasedOnTopic } from "../../api/api";
 
 export const loadPopular = createAsyncThunk(
     'posts/loadPopular',
     async () =>  {
         const popularObj = await getPopular();
-        console.log("popobj", popularObj);
+        //console.log("popobj", popularObj);
         return popularObj
     }
 );
@@ -13,8 +13,8 @@ export const loadPopular = createAsyncThunk(
 export const loadSelectedTopicPost = createAsyncThunk(
     'topics/loadSelectedTopicPost',
     async (topic) => {
-        const topicsObj = await getTopics(topic);
-        console.log("state topics", topicsObj);
+        const topicsObj = await getPostBasedOnTopic(topic);
+        //console.log("state topics", topicsObj);
         return topicsObj;
     }
 );

@@ -2,33 +2,35 @@ import React, { useState } from "react";
 import styles from "./Topic.module.css";
 import { internetCultureSubTopics, gamesSubTopics, qAndAsSubTopics, technologySubTopics, popCultureSubTopics, moviesAndTVSubTopics } from "../../containers/Topics/listOfRedditTopics";
 
-function Topic({topic, collectSelectedTopic}) {
-    let addSubtopic;
+function Topic({topic, collectSelectedTopic, shouldDisplayTopic}) {
+   /* let addSubtopic;
     if (topic.subtopics) {
         addSubtopic = topic.subtopics.map((subtopic, index) => (
             <h5 key={index} >{subtopic}</h5>
         ));
-    }
+    }*/
 
-    const [shouldDisplaySubTopic, setShouldDisplaySubTopic] = useState(false);
-    const handleClick = (event) => {
-        console.log("clicked", event.target.id);
-        if (!addSubtopic) {
-            collectSelectedTopic(event.target.id);
-        } else if (shouldDisplaySubTopic == false) {
-            setShouldDisplaySubTopic(true);
-        } else if (shouldDisplaySubTopic == true) {
-            setShouldDisplaySubTopic(false);
-        }
+    const handleClick = () => {
+        console.log("clicked", topic.data.url);
+        collectSelectedTopic(topic.data.url);
     }
+   let topicName;
+   if (shouldDisplayTopic) {
+        topicName = topic.data.display_name;
+   }
+
+   if (topicName === "Home" || topicName === "Popular") {
+    return;
+   }
 
     return (
-        <div>
-            <h4 onClick={handleClick} id={topic.mainTopic}>
-                {topic.icon} {topic.mainTopic}
-            </h4>
-            <div className={(shouldDisplaySubTopic && addSubtopic) ? styles.subTopicList : ""} >
-                {shouldDisplaySubTopic ? addSubtopic: ""}
+        <div 
+            className={shouldDisplayTopic ? styles.topicList : ""}
+            onClick={handleClick}
+        >
+            <h5>{topicName}</h5>
+            <div  >
+                
             </div>
         </div>
     );

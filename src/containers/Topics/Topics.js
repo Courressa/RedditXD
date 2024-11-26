@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectTopics, loadTopics, loadingTopics, collectFetchTopic } from "./topicsSlice";
+import { selectListTopics, collectFetchTopic, loadTopics } from "./topicsSlice";
 import { Topic } from "../../features/Topic/Topic";
 import styles from "./Topics.module.css";
 import { redditTopics } from "./listOfRedditTopics";
@@ -9,13 +9,26 @@ import { Popular } from "../../features/svg_icons/Popular";
 
 function Topics() {
     const dispatch = useDispatch();
-    
+    const listTopics = useSelector(selectListTopics);
     const collectSelectedTopic = (topic) => {
         dispatch(collectFetchTopic(topic));
     };
 
-    
+    useEffect(() => {
+        dispatch(loadTopics());
+    }, [dispatch])
+    //console.log("selector topics  outside use effect", listTopics);
 
+    const [shouldDisplayTopic, setShouldDisplayTopic] = useState(false);
+
+    const handleClick = () => {
+        if (shouldDisplayTopic === false) {
+            setShouldDisplayTopic(true);
+        } else if (shouldDisplayTopic === true) {
+            setShouldDisplayTopic(false);
+        }
+    }
+    //console.log("clicked?", shouldDisplayTopic);
    /* let subtopic;
    redditMainTopics.map(topic =>
     {switch (topic) {
@@ -54,19 +67,25 @@ function Topics() {
     }}
     );
     console.log(subtopic);*/
+
     return (
         <div className={styles.topics}>
             <div className={styles.mainTopics}>
                 <h4><Home /> Home</h4>
                 <h4><Popular /> Popular</h4>
             </div>
-            <h3>Topics</h3>
-            <div className={styles.mappedMainTopics}>
-                {redditTopics.map((topicArr, index) => (
+            <h3
+                onClick={handleClick}
+            >
+                Topics
+            </h3>
+            <div className={shouldDisplayTopic ? styles.mappedMainTopics : ""}>
+                {listTopics.map((topicArr, index) => (
                     <Topic 
                         key={index}
                         topic={topicArr}
                         collectSelectedTopic={collectSelectedTopic}
+                        shouldDisplayTopic={shouldDisplayTopic}
                     />
                 ))}
                 

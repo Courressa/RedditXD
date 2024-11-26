@@ -28,6 +28,23 @@
     background-color: aliceblue;
 }
 
-.mappedMainTopics {
-    margin-bottom: 4rem;
+.topics h3 {
+    background-color: rgb(9, 78, 55);
+    padding: 1rem;
+    margin: 3rem 1rem 0rem 1rem;
 }
+
+.topics h3:hover {
+    background-color: aquamarine;
+}
+
+.topics h3:active {
+    background-color: rgb(28, 158, 2);
+}
+
+.mappedMainTopics {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem;   
+}
+

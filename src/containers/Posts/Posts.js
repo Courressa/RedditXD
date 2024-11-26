@@ -19,7 +19,7 @@ function Posts() {
         } else {
             dispatch(loadSelectedTopicPost(selectedTopics));
         }
-    }, [selectedTopics]);
+    }, [selectedTopics, dispatch]);
 
     
 
@@ -28,7 +28,7 @@ function Posts() {
     } else if (error || !postData) {
         return <h2>Oops! We ran into an issue with loading this data.</h2>
     }
-    console.log(postData);
+    //console.log(postData);
     return (
         <div className={styles.posts}>
             {postData.map((postArr, index) => (

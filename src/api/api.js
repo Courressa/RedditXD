@@ -41,8 +41,30 @@ export async function getPopular() {
     }
 };*/
 
-export async function getTopics(topic) {
-    const topicsEndpoint = `/r/${topic}.json`;
+export async function getPostBasedOnTopic(topic) {
+    const topicsEndpoint = `${topic}.json`;
+    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+
+    try {
+        const response = await fetch(urlToFetch, {
+            method: "GET"
+        })
+
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            const topics = jsonResponse.data.children;
+            
+            return topics;
+        } else {
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export async function getTopics() {
+    const topicsEndpoint = `/reddits.json`;
     const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
 
     try {
