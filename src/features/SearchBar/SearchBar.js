@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function SearchBar() {
+function SearchBar({userSearchCollected}) {
     const [userSearch, setUserSearch] = useState("");
     const handleUserSearchChange = (event) => {
         setUserSearch(event.target.value);
@@ -9,6 +9,7 @@ function SearchBar() {
 
     const handleSendingUserSearch = (event) => {
         event.preventDefault();
+        userSearchCollected(userSearch)
     }
 
     return (

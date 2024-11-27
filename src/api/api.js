@@ -84,3 +84,25 @@ export async function getTopics() {
         console.log(error);
     }
 };
+
+export async function getSearch(userSearch) {
+    const topicsEndpoint = `/search.json?q=${userSearch}`;
+    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+
+    try {
+        const response = await fetch(urlToFetch, {
+            method: "GET"
+        })
+
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            const topics = jsonResponse.data.children;
+            
+            return topics;
+        } else {
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};

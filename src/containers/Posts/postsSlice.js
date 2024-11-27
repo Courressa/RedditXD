@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getPopular, getPostBasedOnTopic } from "../../api/api";
+import { getPopular, getPostBasedOnTopic, getSearch } from "../../api/api";
 
 export const loadPopular = createAsyncThunk(
     'posts/loadPopular',
@@ -19,6 +19,14 @@ export const loadSelectedTopicPost = createAsyncThunk(
     }
 );
 
+export const loadUserSearch = createAsyncThunk(
+    'topics/loadUserSearch',
+    async (userSearch) => {
+        const searchObj = await getSearch(userSearch);
+        //console.log("user search", searchObj);
+        return searchObj;
+    }
+);
 
 const sliceOption = {
     name:'posts',
@@ -49,13 +57,23 @@ const sliceOption = {
                 state.isLoading = false;
                 state.hasError = false;
                 state.posts = action.payload;
+            }).addCase(loadUserSearch.pending, (state) => {
+                state.isLoading = true;
+                state.hasError = false;
+            }).addCase(loadUserSearch.rejected, (state) => {
+                state.isLoading = false;
+                state.hasError = true;
+            }).addCase(loadUserSearch.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.hasError = false;
+                state.posts = action.payload;
             })
     }
 }
 
 export const postsSlice = createSlice(sliceOption);
 
-export const selectPopular = (state) => state.posts.posts;
+export const selectPost = (state) => state.posts.posts;
 export const loadingPopular = (state) => state.posts.isLoading;
 export const errorFound = (state) => state.posts.hasError;
 

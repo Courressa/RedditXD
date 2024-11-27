@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { SearchBar } from "../../features/SearchBar/SearchBar";
 import { ModeSetter } from "../../features/ModeSetter/ModeSetter";
-import styles from "./Banner.module.css"
+import { collectUserSearch } from "./bannerSlice";
+import styles from "./Banner.module.css";
 
 function Banner() {
+    const dispatch = useDispatch()
+
+    const userSearch = (toSearch) => {
+        dispatch(collectUserSearch(toSearch));
+    };
+
     return (
         <div className={styles.banner}>
             <div className={styles.logo}>
@@ -11,7 +19,9 @@ function Banner() {
                 <h1>RedditXD</h1>
             </div>
             <div className={styles.searchBarComp}>
-                <SearchBar />
+                <SearchBar
+                    userSearchCollected={userSearch}
+                />
             </div>
             <div className={styles.modeSetterComp}>
                 <ModeSetter />
