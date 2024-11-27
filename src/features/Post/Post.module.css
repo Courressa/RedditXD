@@ -54,3 +54,12 @@
     height: 2.5rem;
 }
 
+.commentsIconAndNum {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(230, 230, 230);
+    border-radius: 2rem;
+    height: 2.5rem;
+    width: 5rem;
+}

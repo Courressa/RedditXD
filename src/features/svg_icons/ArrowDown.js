@@ -51,4 +51,4 @@ function ArrowDown () {
     )
 }
 
-export default ArrowDown;
+export {ArrowDown};

@@ -39,4 +39,4 @@ function ArrowUp () {
     )
 }
 
-export default ArrowUp;
+export {ArrowUp};

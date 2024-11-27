@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import styles from "./Post.module.css";
 import Hls from 'hls.js';
-import ArrowUp from "../svg_icons/ArrowUp";
-import ArrowDown from "../svg_icons/ArrowDown";
+import { ArrowUp } from "../svg_icons/ArrowUp";
+import { ArrowDown } from "../svg_icons/ArrowDown";
+import { Comments } from "../svg_icons/Comments";
 
 
 function Post({post}) {
@@ -124,8 +125,9 @@ function Post({post}) {
                         <h3>{kNumberFormatter(post.data.score)}</h3>
                         <ArrowDown />
                     </div>
-                    <div>
-                        <h3>{kNumberFormatter(post.data.num_comments)} comments</h3>
+                    <div className={styles.commentsIconAndNum}>
+                        <Comments />
+                        <h3>{kNumberFormatter(post.data.num_comments)}</h3>
                     </div>
                     
                 </section>

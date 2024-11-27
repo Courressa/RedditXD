@@ -4,7 +4,7 @@ import styles from "./IconsStyle.module.css";
 function Comments () {return (
         <div>
             <svg
-                className={styles.topicIcons}
+                className={styles.comment}
                 width="100mm"
                 height="100mm"
                 version="1.1"
