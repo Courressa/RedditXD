@@ -21,7 +21,7 @@ function Posts() {
         }
     }, [selectedTopics, dispatch]);
 
-    
+    ////******TODO: DISABLE TOPIC SELECTION WHEN POSTS ARE LOADING*******//////
 
     if (loading) {
         return <h2>Loading...</h2>

@@ -28,6 +28,14 @@ function Topics() {
             setShouldDisplayTopic(false);
         }
     }
+    const handleTopicClick = (event) => {
+        console.log("clicked?", event.target.id);
+        if (event.target.id === "Home") {
+            collectSelectedTopic("/r/Home/");
+        } else if (event.target.id === "Popular") {
+            collectSelectedTopic("/r/Popular/");
+        }
+    }
     //console.log("clicked?", shouldDisplayTopic);
    /* let subtopic;
    redditMainTopics.map(topic =>
@@ -71,8 +79,18 @@ function Topics() {
     return (
         <div className={styles.topics}>
             <div className={styles.mainTopics}>
-                <h4><Home /> Home</h4>
-                <h4><Popular /> Popular</h4>
+                <h4
+                    onClick={handleTopicClick}
+                    id="Home"
+                >
+                    <Home /> Home
+                </h4>
+                <h4
+                    onClick={handleTopicClick}
+                    id="Popular"
+                >
+                    <Popular /> Popular
+                </h4>
             </div>
             <h3
                 onClick={handleClick}
