@@ -10,6 +10,7 @@
 
 .topicList h5 {
     padding: 0.6rem 1rem;
+    font-weight: 600;
 }
 
 .topicList h5:hover {
