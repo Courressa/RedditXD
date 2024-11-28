@@ -4,7 +4,7 @@ import styles from "./IconsStyle.module.css";
 function Search () {return (
         <div>
             <svg
-                className={styles.comment}
+                className={styles.search}
                 width="100mm"
                 height="100mm"
                 version="1.1"

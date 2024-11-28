@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { Search } from "../svg_icons/Search";
+import styles from "./SearchBar.module.css";
 
 function SearchBar({userSearchCollected}) {
     const [userSearch, setUserSearch] = useState("");
@@ -14,7 +16,7 @@ function SearchBar({userSearchCollected}) {
 
     return (
         <div>
-            <form>
+            <form  className={styles.searchSection}>
                 <input
                     name="Search"
                     type="text"
@@ -22,15 +24,17 @@ function SearchBar({userSearchCollected}) {
                     onChange={handleUserSearchChange}
                     aria-label="Search"
                     placeholder="Search..."
+                    className={styles.searchBar}
                 />
-                <input
-                    aria-label="Submit"
-                    name="SearchButton"
-                    type="submit"
-                    value="Search"
+                <button
+                    aria-label="Search"
+                    className={styles.searchButton}
                     onClick={handleSendingUserSearch}
-                />
+                >
+                    <Search />
+                </button>
             </form>
+            
         </div>
     );
 };

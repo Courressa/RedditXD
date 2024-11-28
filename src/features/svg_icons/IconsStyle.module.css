@@ -13,7 +13,7 @@
     color: rgba(0, 0, 0, 0);
 }
 
-.arrow path, .comment path {
+.arrow path, .comment path, .search path {
     stroke-width: 0.4rem;
 }
 
@@ -34,7 +34,15 @@
     border-radius: 50%;
 }
 
+.search {
+    width: 1.5rem;
+    height: 100%;
+    color: rgba(0, 0, 0, 0);
+}
 
+.search:hover {
+    cursor: pointer;
+}
 
 /***NEEDED?****/
 
