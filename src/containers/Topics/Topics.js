@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectListTopics, collectFetchTopic, loadTopics } from "./topicsSlice";
+import { selectListTopics, collectFetchTopic, loadTopics, collectMainTopicClick } from "./topicsSlice";
 import { Topic } from "../../features/Topic/Topic";
 import styles from "./Topics.module.css";
 import { redditTopics } from "./listOfRedditTopics";
@@ -12,6 +12,7 @@ function Topics() {
     const listTopics = useSelector(selectListTopics);
     const collectSelectedTopic = (topic) => {
         dispatch(collectFetchTopic(topic));
+        dispatch(collectMainTopicClick());
     };
 
     useEffect(() => {
@@ -20,7 +21,6 @@ function Topics() {
     //console.log("selector topics  outside use effect", listTopics);
 
     const [shouldDisplayTopic, setShouldDisplayTopic] = useState(false);
-
     const handleClick = () => {
         if (shouldDisplayTopic === false) {
             setShouldDisplayTopic(true);
@@ -28,8 +28,8 @@ function Topics() {
             setShouldDisplayTopic(false);
         }
     }
+    
     const handleTopicClick = (event) => {
-        console.log("clicked?", event.target.id);
         if (event.target.id === "Home") {
             collectSelectedTopic("/r/Home/");
         } else if (event.target.id === "Popular") {

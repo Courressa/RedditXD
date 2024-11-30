@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { SearchBar } from "../../features/SearchBar/SearchBar";
 import { ModeSetter } from "../../features/ModeSetter/ModeSetter";
-import { collectUserSearch } from "./bannerSlice";
+import { collectUserSearch, collectUserSearchClick } from "./bannerSlice";
 import styles from "./Banner.module.css";
 
 function Banner() {
@@ -11,6 +11,9 @@ function Banner() {
     const userSearch = (toSearch) => {
         dispatch(collectUserSearch(toSearch));
     };
+    const userSearchClick = () => {
+        dispatch(collectUserSearchClick());
+    }
 
     return (
         <div className={styles.banner}>
@@ -21,6 +24,7 @@ function Banner() {
             <div className={styles.searchBarComp}>
                 <SearchBar
                     userSearchCollected={userSearch}
+                    userSearchClickCollected={userSearchClick}
                 />
             </div>
             <div className={styles.modeSetterComp}>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Search } from "../svg_icons/Search";
 import styles from "./SearchBar.module.css";
 
-function SearchBar({userSearchCollected}) {
+function SearchBar({userSearchCollected, userSearchClickCollected}) {
     const [userSearch, setUserSearch] = useState("");
     const handleUserSearchChange = (event) => {
         setUserSearch(event.target.value);
@@ -11,7 +11,8 @@ function SearchBar({userSearchCollected}) {
 
     const handleSendingUserSearch = (event) => {
         event.preventDefault();
-        userSearchCollected(userSearch)
+        userSearchCollected(userSearch);
+        userSearchClickCollected();
     }
 
     return (

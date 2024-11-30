@@ -14,12 +14,21 @@ export const topicsSlice = createSlice({
     name: 'topics',
     initialState: {
         sendTopics: "",
+        mainTopicClick: false,
         listTopics: []
     },
     reducers: {
         collectFetchTopic: (state, action) => {
             state.sendTopics = action.payload;
         },
+        collectMainTopicClick: (state) => {
+            if (state.mainTopicClick === false) {
+                state.mainTopicClick = true;
+            } else if (state.mainTopicClick === true) {
+                state.mainTopicClick = false;
+            }
+            
+        }
     }, 
     extraReducers: (builder) => {
         builder
@@ -42,8 +51,9 @@ export const topicsSlice = createSlice({
 
 export const selectTopics = (state) => state.topics.sendTopics;
 export const loadingTopics = (state) => state.topics.isLoading;
+export const selectMainTopicsClick = (state) => state.topics.mainTopicClick;
 
 export const selectListTopics = (state) => state.topics.listTopics;
 
-export const { collectFetchTopic } = topicsSlice.actions;
+export const { collectFetchTopic, collectMainTopicClick } = topicsSlice.actions;
 export default topicsSlice.reducer;
