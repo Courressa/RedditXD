@@ -9,6 +9,15 @@
     border-radius: 2rem;
 }
 
+.media {
+    padding: 3rem;
+}
+
+.media p {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
 .media img {
     width: 20rem;
     height: 100%;

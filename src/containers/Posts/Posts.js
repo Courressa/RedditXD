@@ -35,7 +35,6 @@ function Posts() {
         
     }, [userSearchClickPing, sendUserSearch, dispatch]);
 
-    console.log("clicked?",userSearchClickPing);
     ////******TODO: DISABLE TOPIC SELECTION WHEN POSTS ARE LOADING*******//////
 
     if (loading) {
@@ -43,7 +42,7 @@ function Posts() {
     } else if (error || !postData) {
         return <h2>Oops! We ran into an issue with loading this data.</h2>
     }
-    //console.log("Post", postData);
+    console.log("Post", postData);
     return (
         <div className={styles.posts}>
             {postData.map((postArr, index) => (

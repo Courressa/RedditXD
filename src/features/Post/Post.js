@@ -4,10 +4,12 @@ import Hls from 'hls.js';
 import { ArrowUp } from "../svg_icons/ArrowUp";
 import { ArrowDown } from "../svg_icons/ArrowDown";
 import { Comments } from "../svg_icons/Comments";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from "remark-gfm";
 
 
 function Post({post}) {
-    let prevThumbnail;
+    let postData;
     const videoRef = useRef(null);
     useEffect(() => {
         try {
@@ -45,9 +47,9 @@ function Post({post}) {
         //shows image
         if (post.data.post_hint === "image" ) {
             const fetchedImage = post.data.url;
-            prevThumbnail = <img src={fetchedImage} />;
+            postData = <img src={fetchedImage} />;
         } else if (post.data.post_hint === "hosted:video") {
-            prevThumbnail = <video 
+            postData = <video 
                 ref={videoRef} 
                 controls 
                 autoPlay
@@ -57,18 +59,21 @@ function Post({post}) {
                 Your browser does not support the video tag.
             </video>;
         } else if (post.data.post_hint === "rich:video") {
-            prevThumbnail = (
+            postData = (
                 <div className={styles.richVideo}>
                     <img src={post.data.media.oembed.thumbnail_url}/>
                     <a href={post.data.url}>{post.data.url}</a>
                 </div>
             );
         } else if (post.data.thumbnail === "self") {
-            prevThumbnail = <p>{post.data.selftext}</p>;
+            postData = (
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {post.data.selftext}
+                    </ReactMarkdown>);
         } else if (post.data.url.includes("reddit.com/gallery")) {
-            prevThumbnail = <img src={post.data.thumbnail}/>;
+            postData = <img src={post.data.thumbnail}/>;
         } else {
-            prevThumbnail = <a href={post.data.url}>{post.data.url}</a>;
+            postData = <a href={post.data.url}>{post.data.url}</a>;
         }
     } catch (error) {
         console.log(error);
@@ -117,7 +122,9 @@ function Post({post}) {
                 <h4>{dateFormatter()}</h4>
             </section>
             
-            <div className={styles.media}>{prevThumbnail}</div>
+            <div className={styles.media}>
+                {postData}
+            </div>
             <div className={styles.postBody}>
                 <section className={styles.scoreAndComments}>
                     <div className={styles.scoreAndArrows}>
