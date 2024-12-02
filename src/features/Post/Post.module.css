@@ -1,12 +1,15 @@
 .post {
     background-color: aliceblue;
-    height: 100%;
-    margin: 1rem;
     padding: 2rem;
-    width: 60rem;
     justify-items: center;
     border-bottom: 0.01rem solid rgb(177, 177, 177);
     border-radius: 2rem;
+}
+
+.postInfo {
+    height: 100%;
+    margin: 1rem;
+    width: 60rem;
 }
 
 .media {
@@ -50,7 +53,7 @@
 .scoreAndComments {
     display: flex;
     justify-content: space-between;
-    width:23rem;
+    width: 23rem;
 }
 
 .scoreAndArrows {
@@ -71,4 +74,25 @@
     border-radius: 2rem;
     height: 2.5rem;
     width: 5rem;
+}
+
+.commentsIconAndNum:hover {
+    cursor: pointer;
+    background-color: rgb(196, 196, 196);
+}
+
+.commentsIconAndNum:active {
+    background-color: rgb(247, 247, 247);
+}
+
+.authorName {
+    text-align: right;
+    width: 100%;
+    align-self: self-end;
+}
+
+.displayComments {
+    display: flex;
+    flex-direction: column;
+    background-color: green;
 }

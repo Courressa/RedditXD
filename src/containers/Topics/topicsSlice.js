@@ -41,9 +41,12 @@ export const topicsSlice = createSlice({
             }).addCase(loadTopics.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.hasError = false;
-                state.listTopics = action.payload.sort((a, b) => {
-                    return a.data.display_name.localeCompare(b.data.display_name);
-                });;
+                if (action.payload) {
+                    state.listTopics = action.payload.sort((a, b) => {
+                        return a.data.display_name.localeCompare(b.data.display_name);
+                    });
+                }
+                
             })
     }
 })

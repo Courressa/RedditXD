@@ -1,4 +1,3 @@
-
 const appBaseURL = "https://www.reddit.com";
 
 export async function getPopular() {
@@ -41,8 +40,8 @@ export async function getPopular() {
     }
 };*/
 
-export async function getPostBasedOnTopic(topic) {
-    const topicsEndpoint = `${topic}.json`;
+export async function getTopics() {
+    const topicsEndpoint = `/reddits.json`;
     const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
 
     try {
@@ -63,8 +62,10 @@ export async function getPostBasedOnTopic(topic) {
     }
 };
 
-export async function getTopics() {
-    const topicsEndpoint = `/reddits.json`;
+/****** SETUP ERROR DISPLAY IF ELSE ******/
+
+export async function getPostBasedOnTopic(topic) {
+    const topicsEndpoint = `${topic}.json`;
     const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
 
     try {
@@ -99,6 +100,29 @@ export async function getSearch(userSearch) {
             const topics = jsonResponse.data.children;
             
             return topics;
+        } else {
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export async function getCommentListForPost(subreddit, postId) {
+    const topicsEndpoint = `/${subreddit}/comments/${postId}.json`;
+    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+
+    try {
+        const response = await fetch(urlToFetch, {
+            method: "GET"
+        })
+
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            //console.log("post comments fetched", jsonResponse);
+            const comments = jsonResponse[1].data.children.map(child => child.data);
+            
+            return {postId, comments};
         } else {
 
         }

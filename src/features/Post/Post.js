@@ -1,14 +1,19 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styles from "./Post.module.css";
 import Hls from 'hls.js';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from "remark-gfm";
 import { ArrowUp } from "../svg_icons/ArrowUp";
 import { ArrowDown } from "../svg_icons/ArrowDown";
 import { Comments } from "../svg_icons/Comments";
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from "remark-gfm";
+import { FetchedComments } from "../FetchedComments/FetchedComments";
+import { selectComments } from "../../containers/Posts/postsSlice";
 
 
-function Post({post}) {
+function Post({post, collectPostIdAndSubreddit}) {
+    const commentsFetched = useSelector(state => selectComments(state, post.data.id));
+
     let postData;
     const videoRef = useRef(null);
     useEffect(() => {
@@ -39,10 +44,8 @@ function Post({post}) {
         } catch (error) {
             console.log(error);
         }
-        
+    }, [post.data.post_hint, post.data.media])
 
-        
-    }, [])
     try {
         //shows image
         if (post.data.post_hint === "image" ) {
@@ -115,31 +118,56 @@ function Post({post}) {
         return output;
     }
 
+    const [commentsDisplay, setCommentsDisplay] = useState(false);
+
+
+    const handleCommentDropdownClick = () => {
+        if (!commentsDisplay) {
+            collectPostIdAndSubreddit(post.data.subreddit_name_prefixed, post.data.id);
+        } 
+        setCommentsDisplay(!commentsDisplay);
+    }
+
     return (
-        <div className={styles.post}>
-            <section className={styles.postHeader}>
-                <h2>{post.data.title}</h2>
-                <h4>{dateFormatter()}</h4>
-            </section>
-            
-            <div className={styles.media}>
-                {postData}
-            </div>
-            <div className={styles.postBody}>
-                <section className={styles.scoreAndComments}>
-                    <div className={styles.scoreAndArrows}>
-                        <ArrowUp />
-                        <h3>{kNumberFormatter(post.data.score)}</h3>
-                        <ArrowDown />
-                    </div>
-                    <div className={styles.commentsIconAndNum}>
-                        <Comments />
-                        <h3>{kNumberFormatter(post.data.num_comments)}</h3>
-                    </div>
-                    
+        <div className={styles.postInfo}>
+            <div className={styles.post}>
+                <section className={styles.postHeader}>
+                    <h2>{post.data.title}</h2>
+                    <h4>{dateFormatter()}</h4>
                 </section>
-                <section>
-                    <h3>{post.data.author}</h3>
+                
+                <div className={styles.media}>
+                    {postData}
+                </div>
+                <div className={styles.postBody}>
+                    <section className={styles.scoreAndComments}>
+                        <div className={styles.scoreAndArrows}>
+                            <ArrowUp />
+                            <h3>{kNumberFormatter(post.data.score)}</h3>
+                            <ArrowDown />
+                        </div>
+                        <div 
+                            className={styles.commentsIconAndNum}
+                            onClick={handleCommentDropdownClick}
+                            id={post.data.id}
+                        >
+                            <Comments />
+                            <h3>{kNumberFormatter(post.data.num_comments)}</h3>
+                        </div>
+                        
+                    </section>
+                    <section className={styles.authorName}>
+                        <h3>{post.data.author}</h3>
+                    </section>
+                </div>
+            </div>
+            <div className={styles.displayComments}>
+                <section  >
+                    {commentsDisplay && (
+                        <FetchedComments
+                            comments={commentsFetched}
+                        />)}
+                    
                 </section>
             </div>
         </div>
