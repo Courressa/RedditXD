@@ -90,9 +90,3 @@
     width: 100%;
     align-self: self-end;
 }
-
-.displayComments {
-    display: flex;
-    flex-direction: column;
-    background-color: green;
-}

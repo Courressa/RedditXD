@@ -1,0 +1,25 @@
+.commentsList {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(196, 196, 196);
+    
+}
+
+.commentsList img {
+    width: 20rem;
+    height: 100%;
+}
+
+.commentsList a {
+    display: none;
+}
+
+.headComment {
+    height: 20rem;
+    overflow-y: scroll;
+    text-align: left;
+    border-left: 0.1rem solid black;
+    border-bottom: 0.1rem solid black;
+    margin: 1rem 7rem;
+    padding: 1rem;
+}

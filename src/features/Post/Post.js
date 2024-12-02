@@ -161,7 +161,7 @@ function Post({post, collectPostIdAndSubreddit}) {
                     </section>
                 </div>
             </div>
-            <div className={styles.displayComments}>
+            <div >
                 <section  >
                     {commentsDisplay && (
                         <FetchedComments

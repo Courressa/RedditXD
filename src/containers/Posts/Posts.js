@@ -11,9 +11,7 @@ function Posts() {
     const loading = useSelector(loadingPopular);
     const error = useSelector(errorFound);
     const selectedTopics = useSelector(selectTopics);
-    const sendUserSearch = useSelector(selectUserSearch);
-    const userSearchClickPing = useSelector(selectUserSearchClick);
-    const MainTopicClickPing = useSelector(selectMainTopicsClick);
+    
     const dispatch = useDispatch();
     
     

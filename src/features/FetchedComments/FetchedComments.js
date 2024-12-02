@@ -1,20 +1,40 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import styles from "./FetchedComments.module.css";
 
 function FetchedComments({comments}) {
     console.log("comments", comments)
+    /*let commentList;
+    if (comments) {
+        if (comments.body.includes("\n\nhttps")) {
+            commentList = `${comments.body}\n\n![Image](${comments.body.split('\n\n')[1]})`;
+        } else {
+            commentList = comments.body;
+        }
+    }*/
+
     return (
-        <div>
-            {comments ? (comments.map(comment => (
-                <p
-                    key={comment.id}
-                    className={styles.headComment}
-                >
-                    {comment ? comment.body : ""}
-                </p>
-            ))) : ""}
-            
-            
+        <div className={styles.commentsList}>
+            {comments && Array.isArray(comments) ? (
+                comments.map(comment => {
+                const body = comment.body || "";
+                const imageUrl = body.includes("\n\nhttps") ? body.split("\n\n")[1] : null;
+                const markdownContent = imageUrl ? `${body}\n\n![Image](${imageUrl})` : body;
+
+                return (
+                    <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        key={comment.id}
+                        className={styles.headComment}
+                    >
+                        {markdownContent}
+                    </ReactMarkdown>
+                );
+                })
+            ) : (
+                <p>No comments available.</p>
+            )}
         </div>
     )
 
