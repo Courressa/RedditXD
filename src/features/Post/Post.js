@@ -17,33 +17,35 @@ function Post({post, collectPostIdAndSubreddit}) {
     let postData;
     const videoRef = useRef(null);
     useEffect(() => {
-        try {
-            //plays video preview
-            if (post.data.post_hint === "hosted:video") {
-                const fetchedVideo = post.data.media.reddit_video.hls_url;
-                
-                if (Hls.isSupported()) {
-                    const hls = new Hls();
-                    hls.loadSource(fetchedVideo);
-                    hls.attachMedia(videoRef.current);
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    videoRef.current.play();
-                    });
+        let hls;
+        //plays video preview
+        if (post.data.post_hint === "hosted:video") {
+            const fetchedVideo = post.data.media.reddit_video.hls_url;
             
-                    return () => {
-                    hls.destroy();
-                    };
-                } else if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
-                    // For Safari
-                    videoRef.current.src = fetchedVideo;
-                    videoRef.current.addEventListener('loadedmetadata', () => {
-                        videoRef.current.play();
+            if (Hls.isSupported()) {
+                hls = new Hls();
+                hls.loadSource(fetchedVideo);
+                hls.attachMedia(videoRef.current);
+                hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                videoRef.current.play().catch(error => {
+                    console.error('Error with playing video:', error);
                     });
-                }
+                });
+            } else if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+                // For Safari
+                videoRef.current.src = fetchedVideo;
+                videoRef.current.addEventListener('loadedmetadata', () => {
+                    videoRef.current.play().catch(error => {
+                        console.error('Error with playing video:', error);
+                        });
+                });
             }
-        } catch (error) {
-            console.log(error);
         }
+        return () => {
+            if (hls) {
+                hls.destroy();
+            }
+        };
     }, [post.data.post_hint, post.data.media])
 
     try {
@@ -119,8 +121,6 @@ function Post({post, collectPostIdAndSubreddit}) {
     }
 
     const [commentsDisplay, setCommentsDisplay] = useState(false);
-
-
     const handleCommentDropdownClick = () => {
         if (!commentsDisplay) {
             collectPostIdAndSubreddit(post.data.subreddit_name_prefixed, post.data.id);

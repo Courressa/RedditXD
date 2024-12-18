@@ -4,6 +4,7 @@
     justify-items: center;
     border-bottom: 0.01rem solid rgb(177, 177, 177);
     border-radius: 2rem;
+    
 }
 
 .postInfo {
@@ -14,6 +15,7 @@
 
 .media {
     padding: 3rem;
+    text-align: left;
 }
 
 .media p {

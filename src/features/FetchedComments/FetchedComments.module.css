@@ -7,7 +7,7 @@
     
 }
 
-.commentsList img {
+.commentsList img, .RepliesList img {
     width: 25rem;
     height: 100%;
 }
@@ -17,5 +17,16 @@
     border-left: 0.1rem solid black;
     border-bottom: 0.1rem solid black;
     margin: 1rem 7rem;
+    padding: 1rem;
+}
+
+.RepliesList {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(196, 196, 196);
+    text-align: left;
+    border-left: 0.1rem solid black;
+    border-bottom: 0.1rem solid black;
+    margin: 1rem 10rem;
     padding: 1rem;
 }
