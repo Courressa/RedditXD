@@ -11,20 +11,24 @@ function RepliesToComments({replies}) {
                 replies.map(reply => {
                     const body = reply.data.body || "";
                     const imageUrl = body.includes("\n\nhttps") ? body.split("\n\n")[1] : null;
-                    const gifUrl = body.includes('![gif]') ? body.match(/!\[gif\]\(([^)]+)\)/) : null;
-                    console.log("gif replies", gifUrl);
+                    
                     const markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body.split("\n\n")[0];
-                    
-                    
-                    const markdownWithGif = gifUrl ? `${body}\n\n![GIF](${gifUrl})` : body;
+                    console.log("reply for name", reply.author);
                     return (
-                        <ReactMarkdown
-                            remarkPlugins={[remarkGfm]}
+                        <div
                             key={reply.data.id}
                             className={styles.CommentReplies}
                         >
-                            {markdownContent}
-                        </ReactMarkdown>
+                            <h3>{reply.data.author}</h3>
+                            <ReactMarkdown
+                                remarkPlugins={[remarkGfm]}
+                                
+                                
+                            >
+                                {markdownContent}
+                            </ReactMarkdown>
+                        </div>
+                        
                     );
                 })
             ) : (

@@ -25,38 +25,29 @@ function FetchedComments({comments}) {
                 comments.map(comment => {
                     const body = comment.body || "";
                     const imageUrl = body.includes("\n\nhttps") ? body.split("\n\n")[1] : null;
-                    let markdownContent;
+                    const markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body.split("\n\n")[0];
                     const replies = comment.replies;
 
-                    const gifUrl = body.includes('![gif]') ? body.match(/!\[gif\]\(([^)]+)\)/) : null;
-                    let selectGif = gifUrl ? gifUrl[1] : null;
-                    
-                    console.log("gif overall", gifUrl);
-                    if (imageUrl) {
-                        markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body.split("\n\n")[0];
-                    } else {
-                        if (gifUrl) {
-                            console.log("This is that thing",comment.media_metadata.selectGif[1]);
-                        }
-                        
-                        markdownContent = gifUrl ? `${body}\n\n![gif](${comment.media_metadata.selectGif.ext})` : body;
-                    }
-                    
 
                     return (
                         <div key={comment.id}>
-                            <ReactMarkdown
-                                remarkPlugins={[remarkGfm]}
-                                
-                                className={styles.headComment}
-                            >
-                                {markdownContent}
-                            </ReactMarkdown>
-                            {replies ? (
-                                <div
-                                    onClick={ () => handleReplyClick(comment)}
+                            <div className={styles.headComment}>
+                                <h3>{comment.author}</h3>
+                                <ReactMarkdown
+                                    remarkPlugins={[remarkGfm]}
+                                    
+                                    
                                 >
-                                    <p>arrow</p>
+                                    {markdownContent}
+                                </ReactMarkdown>
+                                { replies ? <p onClick={ () => handleReplyClick(comment)}>
+                                    arrow
+                                </p> : null}
+                            </div>
+                            
+                            {replies ? (
+                                <div >
+                                    
                                     {(commentsSelected === comment) && (
                                         <RepliesToComments
                                             replies={comment.replies.data.children}

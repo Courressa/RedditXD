@@ -16,6 +16,7 @@
 .media {
     padding: 3rem;
     text-align: left;
+    list-style-position: inside;
 }
 
 .media p {

@@ -4,7 +4,7 @@
     background-color: rgb(196, 196, 196);
     height: 35rem;
     overflow-y: scroll;
-    
+    list-style: inside;
 }
 
 .commentsList img, .RepliesList img {
