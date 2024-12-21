@@ -19,7 +19,11 @@ function Banner() {
         <div className={styles.banner}>
             <div className={styles.logo}>
                 <img src={require("../../images/Logo1.png")} alt="RedditXD Logo" />
-                <h1>RedditXD</h1>
+                <div className={styles.logo}>
+                    <h1>Reddit</h1>
+                    <h1 className={styles.logoHighlighted} >XD</h1>
+                </div>
+                
             </div>
             <div className={styles.searchBarComp}>
                 <SearchBar

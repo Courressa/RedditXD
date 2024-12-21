@@ -3,10 +3,10 @@
 }
 
 .searchBar {
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
     width: 100%;
-    padding: 0rem 0.6rem;
+    padding: 1rem;
     border: none;
     background-color: rgb(230, 230, 230);
 }
@@ -14,8 +14,8 @@
 
 .searchButton {
     border: none;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
     border-left: none;
     padding: 0.2rem 0.6rem;
     background-color: rgb(230, 230, 230);
