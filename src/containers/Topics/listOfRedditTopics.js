@@ -1,4 +1,4 @@
-import { InternetCulture } from "../../features/svg_icons/InternetCulture";
+import { TopicsIcons } from "../../features/svg_icons/TopicsIcons";
 import { Games } from "../../features/svg_icons/Games";
 import { QAndAs } from "../../features/svg_icons/QAndAs";
 import { Technology } from "../../features/svg_icons/Technology";
@@ -7,7 +7,7 @@ import { MoviesAndTV } from "../../features/svg_icons/MoviesAndTV";
 
 export const redditTopics = [
     { mainTopic: "Internet Culture (Viral)",
-        icon: <InternetCulture />,
+        icon: <TopicsIcons />,
         subtopics: ["Amazing", "Animals & Pets", "Cringe & Facepalm", "Funny", "Interesting", "Memes", "Oddly Satisfying", "Reddit Meta", "Wholesome & Heartwarming"],
     },
     {mainTopic: "Games",

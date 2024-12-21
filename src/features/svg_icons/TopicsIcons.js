@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./IconsStyle.module.css";
 
-function InternetCulture () {return (
+function TopicsIcons () {return (
         <div>
             <svg
                 className={styles.topicIcons}
@@ -39,4 +39,4 @@ function InternetCulture () {return (
     )
 }
 
-export {InternetCulture};
+export {TopicsIcons};

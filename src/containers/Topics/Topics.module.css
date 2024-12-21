@@ -1,6 +1,5 @@
 .topics {
     display: flex;
-    background-color: grey;
     position: sticky;
     top: 3rem;
     padding: 0.2rem 1rem;
@@ -9,42 +8,76 @@
     flex-direction: column;
     overflow-y: scroll;
     font-size: 0.8rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(175, 175, 175) rgba(128, 128, 128, 0);
+    border-right: 0.1rem solid black;
 }
 
-.topics h4 {
+.eachMainTopics {
     display: flex;
+    align-items: center;
     text-align: left;
-    background-color: aqua;
     margin: 1rem 1rem 0rem 1rem;
     padding: 1rem;
+    border-radius: 0.7rem;
+    margin-bottom: 1rem;
+
 }
 
-.topics h4:hover {
-    background-color: blue;
-    cursor: pointer;
+.eachMainTopics:hover {
+    background-color: rgb(212, 212, 212);
 }
 
-.topics h4:active {
-    background-color: aliceblue;
+.eachMainTopics:active {
+    background-color: rgb(88, 88, 88);
 }
 
-.topics h3 {
-    background-color: rgb(9, 78, 55);
+
+.topicsDropDown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 1rem;
-    margin: 3rem 1rem 0rem 1rem;
+    margin: 2rem 1rem 0rem 1rem;
+    border-radius: 0.7rem;
 }
 
-.topics h3:hover {
-    background-color: aquamarine;
+.topicsDropDown:hover {
+    cursor: pointer;
+    background-color: rgb(212, 212, 212);
 }
 
-.topics h3:active {
-    background-color: rgb(28, 158, 2);
+.mainTopics {
+    border-bottom: 0.1rem solid rgb(182, 182, 182);
+}
+
+.topicsTitle {
+    display: flex;
+    align-items: center;
 }
 
 .mappedMainTopics {
     display: flex;
     flex-direction: column;
-    margin-bottom: 4rem;   
+    margin-bottom: 4rem; 
 }
 
+.eachMainTopics h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 1rem;
+}
+
+.topicsTitle h3 {
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
+.dropDownArrowUp {
+    transition: rotate 0.5s ease-out;
+}
+
+.dropDownArrowDown {
+    transition: rotate 0.2s ease-out;
+    rotate: x -180deg;
+}

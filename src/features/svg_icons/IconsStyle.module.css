@@ -55,3 +55,7 @@
 .topicIcons path {
     stroke-width: 0.2rem;
 }
+
+.pointDownIcons {
+    transition: rotate 2s;
+}

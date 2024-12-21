@@ -2,18 +2,24 @@
 
 .topicList {
     display: flex;
+    transition: opacity 1s;
     flex-direction: column;
     text-align: left;
     margin: 0rem 1rem 0rem 2rem;
     border-left: 0.01rem solid rgb(177, 177, 177);
 }
 
-.topicList h5 {
-    padding: 0.6rem 1rem;
-    font-weight: 600;
+.topicListNotVisible {
+    opacity: 0;
 }
 
-.topicList h5:hover {
-    background-color: aliceblue;
+.topicList h3, .topicListNotVisible h3 {
+    padding: 0.6rem 1rem;
+    font-weight: 400;
+    border-radius: 0rem 0.5rem 0.5rem 0rem;
+}
+
+.topicList h3:hover {
+    background-color: rgb(212, 212, 212);
     cursor: pointer;
 }

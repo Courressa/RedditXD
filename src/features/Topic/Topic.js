@@ -25,10 +25,10 @@ function Topic({topic, collectSelectedTopic, shouldDisplayTopic}) {
 
     return (
         <div 
-            className={shouldDisplayTopic ? styles.topicList : ""}
+            className={shouldDisplayTopic ? styles.topicList : styles.topicListNotVisible}
             onClick={handleClick}
         >
-            <h5>{topicName}</h5>
+            <h3>{topicName}</h3>
             <div  >
                 
             </div>
