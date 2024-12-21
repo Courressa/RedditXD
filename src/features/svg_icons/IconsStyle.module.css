@@ -59,3 +59,7 @@
 .pointDownIcons {
     transition: rotate 2s;
 }
+
+.topicIconsActive {
+    color: black;
+}

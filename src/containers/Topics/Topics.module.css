@@ -25,11 +25,12 @@
 }
 
 .eachMainTopics:hover {
+    cursor: pointer;
     background-color: rgb(212, 212, 212);
 }
 
 .eachMainTopics:active {
-    background-color: rgb(88, 88, 88);
+    background-color: rgb(156, 156, 156);
 }
 
 

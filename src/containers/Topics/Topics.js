@@ -30,12 +30,14 @@ function Topics() {
         }
     }
     
+    const [seletedMainTopic, setSeletedMainTopic] = useState("");
     const handleTopicClick = (event) => {
         if (event.target.id === "Home") {
             collectSelectedTopic("/r/Home/");
         } else if (event.target.id === "Popular") {
             collectSelectedTopic("/r/Popular/");
         }
+        setSeletedMainTopic(event.target.id);
     }
     //console.log("clicked?", shouldDisplayTopic);
    /* let subtopic;
@@ -91,7 +93,9 @@ function Topics() {
         <div className={styles.topics}>
             <div className={styles.mainTopics}>
                 <div className={styles.eachMainTopics}>
-                    <Home />
+                    <Home
+                        seletedMainTopic={seletedMainTopic}
+                    />
                     <h4
                         onClick={handleTopicClick}
                         id="Home"
@@ -100,7 +104,9 @@ function Topics() {
                     </h4>
                 </div>
                 <div className={styles.eachMainTopics}>
-                    <Popular />
+                    <Popular
+                        seletedMainTopic={seletedMainTopic}
+                    />
                     <h4
                         onClick={handleTopicClick}
                         id="Popular"

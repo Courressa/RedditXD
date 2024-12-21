@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./IconsStyle.module.css";
 
-function Home () {return (
+function Home ({seletedMainTopic}) {
+    return (
         <div>
             <svg
-                className={styles.topicIcons}
+                className={(seletedMainTopic === "Home") ?
+                    `${styles.topicIcons} ${styles.topicIconsActive}` : styles.topicIcons}
                 width="100mm"
                 height="100mm"
                 version="1.1"

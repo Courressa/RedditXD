@@ -23,3 +23,7 @@
     background-color: rgb(212, 212, 212);
     cursor: pointer;
 }
+
+.topicList h3:active {
+    background-color: rgb(156, 156, 156);
+}
