@@ -5,7 +5,6 @@ import { Topic } from "../../features/Topic/Topic";
 import { Home } from "../../features/svg_icons/Home";
 import { Popular } from "../../features/svg_icons/Popular";
 import { PointUp } from "../../features/svg_icons/PointUp";
-import { PointDown } from "../../features/svg_icons/PointDown";
 import { TopicsIcons } from "../../features/svg_icons/TopicsIcons";
 import styles from "./Topics.module.css";
 
