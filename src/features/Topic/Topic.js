@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Topic.module.css";
-import { internetCultureSubTopics, gamesSubTopics, qAndAsSubTopics, technologySubTopics, popCultureSubTopics, moviesAndTVSubTopics } from "../../containers/Topics/listOfRedditTopics";
 
 function Topic({topic, collectSelectedTopic, shouldDisplayTopic}) {
    /* let addSubtopic;

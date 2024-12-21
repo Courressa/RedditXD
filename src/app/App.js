@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../logo.svg';
 import { Counter } from '../features/counter/Counter';
 import { Banner } from '../containers/Banner/Banner';
 import { Topics } from '../containers/Topics/Topics';
