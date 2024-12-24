@@ -41,10 +41,19 @@ header {
 }
 
 .app {
+    transition: all 1s ease-in-out;
     text-align: center;
 }
 
 .content {
     display: flex;
     height: 100%;
+}
+
+/*Dark Mode*/
+
+.appDarkMode {
+    transition: all 1s;
+    background-color: rgb(24, 24, 24);
+    color: rgb(243, 243, 243);
 }

@@ -9,10 +9,12 @@ import { ArrowDown } from "../svg_icons/ArrowDown";
 import { Comments } from "../svg_icons/Comments";
 import { FetchedComments } from "../FetchedComments/FetchedComments";
 import { selectComments } from "../../containers/Posts/postsSlice";
+import { selectModeState } from "../ModeSetter/modeSetterSlice";
 
 
 function Post({post, collectPostIdAndSubreddit}) {
     const commentsFetched = useSelector(state => selectComments(state, post.data.id));
+    const darkModeState = useSelector(selectModeState);
 
     let postData;
     const videoRef = useRef(null);
@@ -67,7 +69,7 @@ function Post({post, collectPostIdAndSubreddit}) {
             postData = (
                 <div className={styles.richVideo}>
                     <img src={post.data.media.oembed.thumbnail_url}/>
-                    <a href={post.data.url}>{post.data.url}</a>
+                    <a href={post.data.url} target="_blank">{post.data.url}</a>
                 </div>
             );
         } else if (post.data.thumbnail === "self") {
@@ -78,7 +80,7 @@ function Post({post, collectPostIdAndSubreddit}) {
         } else if (post.data.url.includes("reddit.com/gallery")) {
             postData = <img src={post.data.thumbnail}/>;
         } else {
-            postData = <a href={post.data.url}>{post.data.url}</a>;
+            postData = <a href={post.data.url} target="_blank">{post.data.url}</a>;
         }
     } catch (error) {
         console.log(error);
@@ -130,24 +132,24 @@ function Post({post, collectPostIdAndSubreddit}) {
 
     return (
         <div className={styles.postInfo}>
-            <div className={styles.post}>
+            <div className={darkModeState ? styles.postDarkMode : styles.post}>
                 <section className={styles.postHeader}>
                     <h2>{post.data.title}</h2>
                     <h4>{dateFormatter()}</h4>
                 </section>
                 
-                <div className={styles.media}>
+                <div className={darkModeState ? styles.mediaDarkMode : styles.media}>
                     {postData}
                 </div>
                 <div className={styles.postBody}>
                     <section className={styles.scoreAndComments}>
-                        <div className={styles.scoreAndArrows}>
+                        <div className={darkModeState ? styles.scoreAndArrowsDarkMode : styles.scoreAndArrows}>
                             <ArrowUp />
                             <h3>{kNumberFormatter(post.data.score)}</h3>
                             <ArrowDown />
                         </div>
                         <div 
-                            className={styles.commentsIconAndNum}
+                            className={darkModeState ? styles.commentsIconAndNumDarkMode : styles.commentsIconAndNum}
                             onClick={handleCommentDropdownClick}
                             id={post.data.id}
                         >

@@ -8,7 +8,7 @@ import { PointUp } from "../../features/svg_icons/PointUp";
 import { TopicsIcons } from "../../features/svg_icons/TopicsIcons";
 import styles from "./Topics.module.css";
 
-function Topics() {
+function Topics({darkModeSwitch}) {
     const dispatch = useDispatch();
     const listTopics = useSelector(selectListTopics);
     const collectSelectedTopic = (topic) => {
@@ -90,21 +90,31 @@ function Topics() {
         
     */
     return (
-        <div className={styles.topics}>
+        <div className={darkModeSwitch ? styles.topicsDarkMode : styles.topics}>
             <div className={styles.mainTopics}>
-                <div className={styles.eachMainTopics}>
+                <div
+                    className={darkModeSwitch ? styles.eachMainTopicsDarkMode : styles.eachMainTopics}
+                    onClick={handleTopicClick}
+                    id="Home"
+                >
                     <Home
                         seletedMainTopic={seletedMainTopic}
+                        darkModeSwitch={darkModeSwitch}
                     />
                     <h4
                         onClick={handleTopicClick}
                         id="Home"
                     >
-                         Home
+                        Home
                     </h4>
                 </div>
-                <div className={styles.eachMainTopics}>
+                <div 
+                    className={darkModeSwitch ? styles.eachMainTopicsDarkMode : styles.eachMainTopics}
+                    onClick={handleTopicClick}
+                    id="Popular"
+                >
                     <Popular
+                        darkModeSwitch={darkModeSwitch}
                         seletedMainTopic={seletedMainTopic}
                     />
                     <h4
@@ -117,17 +127,21 @@ function Topics() {
             </div>
             <div
                 onClick={handleClick}
-                className={styles.topicsDropDown}
+                className={darkModeSwitch ? styles.topicsDropDownDarkMode : styles.topicsDropDown}
             >
                 <div className={styles.topicsTitle} >
-                    <TopicsIcons />
+                    <TopicsIcons
+                        darkModeSwitch={darkModeSwitch}
+                    />
                     <h3
                     >
                         Topics
                     </h3>
                 </div>
                 <div className={shouldDisplayTopic ? styles.dropDownArrowUp : styles.dropDownArrowDown} >
-                    <PointUp />
+                    <PointUp
+                        darkModeSwitch={darkModeSwitch}
+                    />
                 </div>
                 
             </div>

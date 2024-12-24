@@ -1,12 +1,21 @@
 import React from "react";
 import styles from "./IconsStyle.module.css";
 
-function Home ({seletedMainTopic}) {
+function Home ({seletedMainTopic, darkModeSwitch}) {
+    let homeStyle;
+
+    if ((seletedMainTopic === "Home") && (!darkModeSwitch)) {
+        homeStyle = `${styles.topicIcons} ${styles.topicIconsActive}`;
+    } else if ((seletedMainTopic === "Home") && (darkModeSwitch)) {
+        homeStyle = `${styles.topicIcons} ${styles.topicIconsActiveDarkMode}`;
+    } else if (seletedMainTopic !== "Home") {
+        homeStyle = styles.topicIcons;
+    };
+
     return (
         <div>
             <svg
-                className={(seletedMainTopic === "Home") ?
-                    `${styles.topicIcons} ${styles.topicIconsActive}` : styles.topicIcons}
+                className={homeStyle}
                 width="100mm"
                 height="100mm"
                 version="1.1"
@@ -17,7 +26,7 @@ function Home ({seletedMainTopic}) {
                   id="defs1" />
                <path
                   fill="currentColor"
-                  stroke="#000000"
+                  stroke={darkModeSwitch ? "#FFF" : "#000"}
                   strokeWidth="0.311513"
                   strokeLinecap="square"
                   d="m 63.556037,61.235134 c 6.715531,3.159149 6.839895,9.477445 6.839895,9.477445 v 26.915942 h 21.01712 V 48.598542 h 5.471914 L 49.989784,2.5000252 3.0286503,48.648629 H 8.5005636 V 97.678606 H 29.517684 v -26.91594 c 0,0 0.162835,-6.376935 6.878366,-9.536083 6.715528,-3.159148 13.59923,-2.999134 13.59923,-2.999134 0,0 6.845231,-0.151463 13.560757,3.007685 z"

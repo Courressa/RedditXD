@@ -1,4 +1,5 @@
 .banner {
+    transition: all 1s ease-in-out;
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -35,4 +36,18 @@
 
 .modeSetterComp {
     margin-right: 0.8rem;
+}
+
+/*Dark Mode*/
+
+.bannerDarkMode {
+    transition: all 1s ease-in-out;
+    background-color: rgb(24, 24, 24);
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: 4rem;
+    border-bottom: 0.1rem solid white;
+    align-items: center;
 }

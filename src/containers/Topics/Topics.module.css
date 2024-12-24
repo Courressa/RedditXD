@@ -21,7 +21,6 @@
     padding: 1rem;
     border-radius: 0.7rem;
     margin-bottom: 1rem;
-
 }
 
 .eachMainTopics:hover {
@@ -81,4 +80,60 @@
 .dropDownArrowDown {
     transition: rotate 0.2s ease-out;
     rotate: x -180deg;
+}
+
+/*Dark Mode*/
+
+.topicsDarkMode {
+    display: flex;
+    position: sticky;
+    top: 3rem;
+    padding: 0.2rem 1rem;
+    width: 17%;
+    height: 100vh;
+    flex-direction: column;
+    overflow-y: scroll;
+    font-size: 0.8rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(175, 175, 175) rgba(128, 128, 128, 0);
+    border-right: 0.1rem solid white;
+}
+
+.eachMainTopicsDarkMode {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin: 1rem 1rem 0rem 1rem;
+    padding: 1rem;
+    border-radius: 0.7rem;
+    margin-bottom: 1rem;
+}
+
+.eachMainTopicsDarkMode:hover {
+    cursor: pointer;
+    background-color: rgb(51, 51, 51);
+}
+
+.eachMainTopicsDarkMode:active {
+    background-color: rgb(156, 156, 156);
+}
+
+.eachMainTopicsDarkMode h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 1rem;
+}
+
+.topicsDropDownDarkMode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 2rem 1rem 0rem 1rem;
+    border-radius: 0.7rem;
+}
+
+.topicsDropDownDarkMode:hover {
+    cursor: pointer;
+    background-color: rgb(51, 51, 51);
 }

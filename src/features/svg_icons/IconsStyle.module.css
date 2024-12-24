@@ -63,3 +63,9 @@
 .topicIconsActive {
     color: black;
 }
+
+/*Dark Mode*/
+
+.topicIconsActiveDarkMode {
+    color: rgb(255, 255, 255);
+}

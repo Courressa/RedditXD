@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./IconsStyle.module.css";
 
-function PointUp () {
+function PointUp ({darkModeSwitch}) {
     
     return (
         <div>
@@ -19,7 +19,7 @@ function PointUp () {
                     id="layer3">
                     <path
                     fill="none"
-                    stroke="#000000"
+                    stroke={darkModeSwitch ? "#FFF" : "#000"}
                     strokeWidth="1"
                     strokeLinecap="square"
                     d="M 3.3223531,60.963496 50.024218,3.611649 96.674298,60.662437"

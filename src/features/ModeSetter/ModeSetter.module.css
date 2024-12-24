@@ -33,6 +33,7 @@
 
 .toggle.darkMode {
     background-color: rgb(3, 3, 3);
+    box-shadow: 1px 1px 10px rgb(128, 128, 128);
 }
 
 .toggle:hover {
