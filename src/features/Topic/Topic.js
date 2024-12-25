@@ -10,8 +10,10 @@ function Topic({topic, collectSelectedTopic, shouldDisplayTopic, darkModeSwitch}
     }*/
 
     const handleClick = () => {
-        console.log("clicked", topic.data.url);
-        collectSelectedTopic(topic.data.url);
+        if (shouldDisplayTopic) {
+            console.log("clicked", topic.data.url);
+            collectSelectedTopic(topic.data.url);
+        }
     }
 
    let topicName;
@@ -38,9 +40,6 @@ function Topic({topic, collectSelectedTopic, shouldDisplayTopic, darkModeSwitch}
             onClick={handleClick}
         >
             <h3>{topicName}</h3>
-            <div  >
-                
-            </div>
         </div>
     );
 };

@@ -6,7 +6,7 @@ import styles from "./FetchedComments.module.css";
 function RepliesToComments({replies}) {
     console.log("replies", replies);
     return (
-        <div className={styles.RepliesList}>
+        <div className={styles.repliesList}>
             {replies && Array.isArray(replies) ? (
                 replies.map(reply => {
                     const body = reply.data.body || "";
@@ -17,7 +17,7 @@ function RepliesToComments({replies}) {
                     return (
                         <div
                             key={reply.data.id}
-                            className={styles.CommentReplies}
+                            className={styles.commentReplies}
                         >
                             <h3>{reply.data.author}</h3>
                             <ReactMarkdown

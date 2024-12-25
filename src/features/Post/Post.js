@@ -163,14 +163,17 @@ function Post({post, collectPostIdAndSubreddit}) {
                     </section>
                 </div>
             </div>
-            <div >
-                <section  >
-                    {commentsDisplay && (
+            <div>
+            {commentsDisplay && (
+                <section>
+                    <div className={styles.fetchedCommentsBkgdDrop} ></div>
+                    
                         <FetchedComments
                             comments={commentsFetched}
-                        />)}
+                        />
                     
                 </section>
+            )}
             </div>
         </div>
     );

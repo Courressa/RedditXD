@@ -1,10 +1,16 @@
 .commentsList {
+    position: relative;
+    top: -3rem;
     display: flex;
     flex-direction: column;
     background-color: rgb(196, 196, 196);
     height: 35rem;
     overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(226, 226, 226) rgba(196, 196, 196, 0);
     list-style: inside;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
 }
 
 .commentsList img, .RepliesList img {
@@ -14,19 +20,23 @@
 
 .headComment {
     text-align: left;
-    border-left: 0.1rem solid black;
-    border-bottom: 0.1rem solid black;
+    border-left: 0.1rem solid rgb(133, 133, 133);
     margin: 1rem 7rem;
     padding: 1rem;
+    border-bottom-left-radius: 2rem;
 }
 
-.RepliesList {
+.repliesList {
     display: flex;
     flex-direction: column;
     background-color: rgb(196, 196, 196);
     text-align: left;
-    border-left: 0.1rem solid black;
-    border-bottom: 0.1rem solid black;
+    border-left: 0.1rem solid rgb(133, 133, 133);
     margin: 1rem 10rem;
     padding: 1rem;
+    border-bottom-left-radius: 2rem;
+}
+
+.commentReplies {
+    margin-bottom: 1.5rem;
 }
