@@ -154,6 +154,7 @@ function Topics({darkModeSwitch}) {
                         topic={topicArr}
                         collectSelectedTopic={collectSelectedTopic}
                         shouldDisplayTopic={shouldDisplayTopic}
+                        darkModeSwitch={darkModeSwitch}
                     />
                 ))}
                 

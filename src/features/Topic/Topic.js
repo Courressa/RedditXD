@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Topic.module.css";
 
-function Topic({topic, collectSelectedTopic, shouldDisplayTopic}) {
+function Topic({topic, collectSelectedTopic, shouldDisplayTopic, darkModeSwitch}) {
    /* let addSubtopic;
     if (topic.subtopics) {
         addSubtopic = topic.subtopics.map((subtopic, index) => (
@@ -13,6 +13,7 @@ function Topic({topic, collectSelectedTopic, shouldDisplayTopic}) {
         console.log("clicked", topic.data.url);
         collectSelectedTopic(topic.data.url);
     }
+
    let topicName;
    if (shouldDisplayTopic) {
         topicName = topic.data.display_name;
@@ -22,9 +23,18 @@ function Topic({topic, collectSelectedTopic, shouldDisplayTopic}) {
     return;
    }
 
+   let topicListStyle;
+
+    if ((shouldDisplayTopic) && (!darkModeSwitch)) {
+        topicListStyle = styles.topicList;
+    } else if ((shouldDisplayTopic) && (darkModeSwitch)) {
+        topicListStyle = styles.topicListDarkMode;
+    } else if (!shouldDisplayTopic) {
+        topicListStyle = styles.topicListNotVisible;
+    };
     return (
         <div 
-            className={shouldDisplayTopic ? styles.topicList : styles.topicListNotVisible}
+            className={topicListStyle}
             onClick={handleClick}
         >
             <h3>{topicName}</h3>
