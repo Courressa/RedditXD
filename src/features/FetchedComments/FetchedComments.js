@@ -23,7 +23,7 @@ function FetchedComments({comments}) {
     
 
     return (
-        <div className={styles.commentsList}>
+        <div className={comments ? styles.commentsList : styles.noCommentsList}>
             {comments && Array.isArray(comments) ? (
                 comments.map(comment => {
                     const body = comment.body || "";
@@ -67,7 +67,7 @@ function FetchedComments({comments}) {
                     );
                 })
             ) : (
-                <p>No comments available.</p>
+                <p className={styles.loadingComments}>No comments available.</p>
             )}
         </div>
     )

@@ -1,3 +1,7 @@
+.noCommentsList {
+    height: 3rem;
+}
+
 .commentsList {
     position: relative;
     top: -3rem;
@@ -9,6 +13,17 @@
     scrollbar-width: thin;
     scrollbar-color: rgb(226, 226, 226) rgba(196, 196, 196, 0);
     list-style: inside;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    transition: height 1s;
+}
+
+.loadingComments {
+    background-color: rgb(196, 196, 196);
+    width: 100%;
+    height: 3rem;
+    position: relative;
+    top: -3rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
 }
@@ -44,7 +59,6 @@
 .repliesList {
     display: flex;
     flex-direction: column;
-    background-color: rgb(196, 196, 196);
     text-align: left;
     border-left: 0.1rem solid rgb(133, 133, 133);
     margin: 1rem 10rem;
