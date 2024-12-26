@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { RepliesToComments } from "./RepliesToComments";
+import { PointDown } from "../svg_icons/PointDown";
 import styles from "./FetchedComments.module.css";
 
 function FetchedComments({comments}) {
@@ -19,6 +20,8 @@ function FetchedComments({comments}) {
         setCommentsSelected(comment);
     }
 
+    
+
     return (
         <div className={styles.commentsList}>
             {comments && Array.isArray(comments) ? (
@@ -27,7 +30,6 @@ function FetchedComments({comments}) {
                     const imageUrl = body.includes("\n\nhttps") ? body.split("\n\n")[1] : null;
                     const markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body.split("\n\n")[0];
                     const replies = comment.replies;
-
 
                     return (
                         <div key={comment.id}>
@@ -40,9 +42,15 @@ function FetchedComments({comments}) {
                                 >
                                     {markdownContent}
                                 </ReactMarkdown>
-                                { replies ? <p onClick={ () => handleReplyClick(comment)}>
-                                    arrow
-                                </p> : null}
+                                { (replies && (commentsSelected !== comment)) ? 
+                                    <div 
+                                        onClick={ () => handleReplyClick(comment)}
+                                        className={styles.commentRepliesDropIcon}
+                                    >
+                                        <PointDown />
+                                        <p>replies</p>
+                                    </div> : null
+                                }
                             </div>
                             
                             {replies ? (

@@ -44,8 +44,6 @@
     cursor: pointer;
 }
 
-/***NEEDED?****/
-
 .topicIcons {
     color: rgba(0, 0, 0, 0);
     width: 1.4rem;
@@ -53,15 +51,21 @@
 }
 
 .topicIcons path {
-    stroke-width: 0.2rem;
-}
-
-.pointDownIcons {
-    transition: rotate 2s;
+    stroke-width: 0.3rem;
 }
 
 .topicIconsActive {
     color: black;
+}
+
+.pointDown {
+    color: rgba(0, 0, 0, 0);
+    width: 1rem;
+    height: 100%;
+}
+
+.pointDown path {
+    stroke-width: 0.6rem;
 }
 
 /*Dark Mode*/

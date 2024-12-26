@@ -6,7 +6,7 @@ function PointDown () {
     return (
         <div>
             <svg
-                className={styles.topicIcons}
+                className={styles.pointDown}
                 width="100mm"
                 height="100mm"
                 version="1.1"

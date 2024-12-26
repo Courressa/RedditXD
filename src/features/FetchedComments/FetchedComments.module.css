@@ -26,6 +26,20 @@
     border-bottom-left-radius: 2rem;
 }
 
+.commentRepliesDropIcon {
+    display: flex;
+    align-items: center;
+}
+
+.commentRepliesDropIcon:hover {
+    cursor: pointer;
+}
+
+.commentRepliesDropIcon p {
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
 .repliesList {
     display: flex;
     flex-direction: column;
