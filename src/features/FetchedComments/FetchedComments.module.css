@@ -29,6 +29,7 @@
 .commentRepliesDropIcon {
     display: flex;
     align-items: center;
+    margin-top: 1rem;
 }
 
 .commentRepliesDropIcon:hover {
