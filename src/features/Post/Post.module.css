@@ -48,13 +48,8 @@
     text-decoration: underline;
 }
 
-.media img, .mediaDarkMode img {
+.media img, .mediaDarkMode img, .media video, .mediaDarkMode video {
     width: 20rem;
-    height: 100%;
-}
-
-.media video, .mediaDarkMode video {
-    width: 100%;
     height: 100%;
 }
 
@@ -127,6 +122,17 @@
     justify-items: center;
     border-bottom: 0.01rem solid rgb(177, 177, 177);
     border-radius: 2rem;
+}
+
+.fetchedCommentsBkgdDropDarkMode {
+    transition: all 1s;
+    position: relative;
+    top: -3rem;
+    z-index: -1;
+    background-color: rgb(83, 83, 83);
+    width: 100%;
+    height: 3rem;
+    margin: 0;
 }
 
 .mediaDarkMode a {

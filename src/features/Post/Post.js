@@ -166,11 +166,11 @@ function Post({post, collectPostIdAndSubreddit}) {
             <div>
             {commentsDisplay && (
                 <section>
-                    <div className={styles.fetchedCommentsBkgdDrop} ></div>
-                    
-                        <FetchedComments
-                            comments={commentsFetched}
-                        />
+                    <div className={darkModeState ? styles.fetchedCommentsBkgdDropDarkMode : styles.fetchedCommentsBkgdDrop} ></div>
+                    <FetchedComments
+                        darkModeSwitch={darkModeState}
+                        comments={commentsFetched}
+                    />
                     
                 </section>
             )}

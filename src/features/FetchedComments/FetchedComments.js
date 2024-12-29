@@ -5,7 +5,7 @@ import { RepliesToComments } from "./RepliesToComments";
 import { PointDown } from "../svg_icons/PointDown";
 import styles from "./FetchedComments.module.css";
 
-function FetchedComments({comments}) {
+function FetchedComments({comments, darkModeSwitch}) {
     console.log("comments", comments)
     /*let commentList;
     if (comments) {
@@ -20,10 +20,18 @@ function FetchedComments({comments}) {
         setCommentsSelected(comment);
     }
 
-    
+    let commentListStyle;
+
+    if (comments && (!darkModeSwitch)) {
+        commentListStyle = styles.commentsList;
+    } else if (comments && (darkModeSwitch)) {
+        commentListStyle = styles.commentsListDarkMode;
+    } else if (!comments) {
+        commentListStyle = styles.noCommentsList;
+    };
 
     return (
-        <div className={comments ? styles.commentsList : styles.noCommentsList}>
+        <div className={commentListStyle}>
             {comments && Array.isArray(comments) ? (
                 comments.map(comment => {
                     const body = comment.body || "";
@@ -37,8 +45,6 @@ function FetchedComments({comments}) {
                                 <h3>{comment.author}</h3>
                                 <ReactMarkdown
                                     remarkPlugins={[remarkGfm]}
-                                    
-                                    
                                 >
                                     {markdownContent}
                                 </ReactMarkdown>
@@ -67,7 +73,7 @@ function FetchedComments({comments}) {
                     );
                 })
             ) : (
-                <p className={styles.loadingComments}>No comments available.</p>
+                <p className={darkModeSwitch ? styles.loadingCommentsDarkMode : styles.loadingComments}>Loading comments.</p>
             )}
         </div>
     )
