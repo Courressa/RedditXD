@@ -41,8 +41,8 @@ function Post({post, collectPostIdAndSubreddit}) {
                         console.error('Error with playing video:', error);
                         });
                 });
-            }
-        }
+            };
+        };
         return () => {
             if (hls) {
                 hls.destroy();
@@ -81,11 +81,10 @@ function Post({post, collectPostIdAndSubreddit}) {
             postData = <img src={post.data.thumbnail}/>;
         } else {
             postData = <a href={post.data.url} target="_blank">{post.data.url}</a>;
-        }
+        };
     } catch (error) {
         console.log(error);
-    }
-    
+    };
 
     const kNumberFormatter = (num) => {
         let formatConverter;
@@ -117,18 +116,39 @@ function Post({post, collectPostIdAndSubreddit}) {
             const postDate = new Date(postTime);
             // Format the date to a readable string
             output = postDate.toLocaleDateString();
-        }
+        };
 
         return output;
-    }
+    };
 
     const [commentsDisplay, setCommentsDisplay] = useState(false);
     const handleCommentDropdownClick = () => {
         if (!commentsDisplay) {
             collectPostIdAndSubreddit(post.data.subreddit_name_prefixed, post.data.id);
-        } 
+        };
         setCommentsDisplay(!commentsDisplay);
-    }
+    };
+
+    const [arrowUpState, setArrowUpState] = useState(false);
+    const [arrowDownState, setArrowDownState] = useState(false);
+    const [redditScore, setRedditScore] = useState(post.data.score);
+    const handleArrowClick = (event) => {
+        if ((event.target.id === "ArrowUp" || event.target.id === "ArrowUpPath") && (arrowUpState === false)) {
+            setArrowUpState(true);
+            setArrowDownState(false);
+            setRedditScore(post.data.score + 1);
+        } else if ((event.target.id === "ArrowDown" || event.target.id === "ArrowDownPath" ) && (arrowDownState === false)) {
+            setArrowDownState(true);
+            setArrowUpState(false);
+            setRedditScore(post.data.score - 1);
+        } else if ((event.target.id === "ArrowUp" || event.target.id === "ArrowUpPath") && (arrowUpState === true)) {
+            setArrowUpState(false);
+            setRedditScore(post.data.score);
+        } else if ((event.target.id === "ArrowDown" || event.target.id === "ArrowDownPath") && (arrowDownState === true)) {
+            setArrowDownState(false);
+            setRedditScore(post.data.score);
+        };
+    };
 
     return (
         <div className={styles.postInfo}>
@@ -144,16 +164,30 @@ function Post({post, collectPostIdAndSubreddit}) {
                 <div className={styles.postBody}>
                     <section className={styles.scoreAndComments}>
                         <div className={darkModeState ? styles.scoreAndArrowsDarkMode : styles.scoreAndArrows}>
-                            <ArrowUp />
-                            <h3>{kNumberFormatter(post.data.score)}</h3>
-                            <ArrowDown />
+                            <div onClick={handleArrowClick}>
+                                <ArrowUp
+                                    arrowUpState={arrowUpState}
+                                    darkModeSwitch={darkModeState}
+                                />
+                            </div>
+                            
+                            <h3>{kNumberFormatter(redditScore)}</h3>
+                            <div onClick={handleArrowClick}>
+                                <ArrowDown
+                                    arrowDownState={arrowDownState}
+                                    darkModeSwitch={darkModeState}
+                                />
+                            </div>
+                            
                         </div>
                         <div 
                             className={darkModeState ? styles.commentsIconAndNumDarkMode : styles.commentsIconAndNum}
                             onClick={handleCommentDropdownClick}
                             id={post.data.id}
                         >
-                            <Comments />
+                            <Comments
+                                darkModeSwitch={darkModeState}
+                            />
                             <h3>{kNumberFormatter(post.data.num_comments)}</h3>
                         </div>
                         

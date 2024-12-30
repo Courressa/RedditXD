@@ -7,22 +7,23 @@
     border-radius: 50%;
 }
 
+.arrow:hover {
+    cursor: pointer;
+    background-color: rgb(221, 221, 221);
+}
+
+.arrow:active {
+    width: 1.7rem;
+}
+
 .comment {
     width: 1.5rem;
     height: 100%;
     color: rgba(0, 0, 0, 0);
 }
 
-.arrow path, .comment path, .search path {
+.arrow path, .comment path, .search path, .arrowDarkMode path {
     stroke-width: 0.4rem;
-}
-
-.arrow:hover {
-    background-color: rgb(221, 221, 221)
-}
-
-.arrow:active {
-    width: 1.7rem;
 }
 
 .arrowDownClicked {
@@ -32,6 +33,23 @@
     height: 100%;
     padding: 0.4rem;
     border-radius: 50%;
+}
+
+.arrowDownClicked:hover {
+    cursor: pointer;
+}
+
+.arrowUpClicked {
+    color: rgb(115, 138, 0);
+    display: flex;
+    width: 2.1rem;
+    height: 100%;
+    padding: 0.4rem;
+    border-radius: 50%;
+}
+
+.arrowUpClicked:hover {
+    cursor: pointer;
 }
 
 .search {
@@ -69,6 +87,50 @@
 }
 
 /*Dark Mode*/
+
+.arrowDarkMode {
+    display: flex;
+    color: rgba(0, 0, 0, 0);
+    width: 2.1rem;
+    height: 100%;
+    padding: 0.4rem;
+    border-radius: 50%;
+}
+
+.arrowDarkMode:hover {
+    cursor: pointer;
+    background-color: rgb(27, 27, 27);
+}
+
+.arrowDarkMode:active {
+    width: 1.7rem;
+}
+
+.arrowUpClickedDarkMode {
+    color: rgb(115, 138, 0);
+    display: flex;
+    width: 2.1rem;
+    height: 100%;
+    padding: 0.4rem;
+    border-radius: 50%;
+}
+
+.arrowUpClickedDarkMode:hover {
+    cursor: pointer;
+}
+
+.arrowDownClickedDarkMode {
+    color: #973585;
+    display: flex;
+    width: 2.1rem;
+    height: 100%;
+    padding: 0.4rem;
+    border-radius: 50%;
+}
+
+.arrowDownClickedDarkMode:hover {
+    cursor: pointer;
+}
 
 .topicIconsActiveDarkMode {
     color: rgb(255, 255, 255);
