@@ -5,6 +5,7 @@ import { Counter } from '../features/counter/Counter';
 import { Banner } from '../containers/Banner/Banner';
 import { Topics } from '../containers/Topics/Topics';
 import { Posts } from '../containers/Posts/Posts';
+import { LoadingIcon } from '../features/LoadingIcon/LoadingIcon';
 import styles from "./App.module.css"
 import './App.css';
 

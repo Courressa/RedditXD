@@ -1,0 +1,32 @@
+.loadingIcons {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    width: 10rem;
+    align-items: center;
+    padding: 1rem;
+    justify-self: center;
+}
+
+.loadingIcons img {
+    width: auto;
+    height: 6rem;
+    animation: 3s linear 0s infinite rotate;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(360deg);
+    }
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+.loadingIcons span {
+    text-align: left;
+    font-size: 6rem;
+    width: 4rem;
+    position: relative;
+    top: -5rem;
+}

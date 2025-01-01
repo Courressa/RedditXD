@@ -6,3 +6,8 @@
     align-items: center;
     z-index: 1;
 }
+
+.loadingOrError {
+    align-content: center;
+    width: 100%;
+}
