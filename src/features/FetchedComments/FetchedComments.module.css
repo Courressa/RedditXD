@@ -1,5 +1,5 @@
 .noCommentsList {
-    height: 3rem;
+    height: auto;
 }
 
 .commentsList {
@@ -19,9 +19,9 @@
 }
 
 .loadingComments {
-    background-color: rgb(196, 196, 196);
+    background: radial-gradient(white, rgb(196, 196, 196));
     width: 100%;
-    height: 3rem;
+    height: auto;
     position: relative;
     top: -3rem;
     border-bottom-left-radius: 2rem;
@@ -89,9 +89,9 @@
 }
 
 .loadingCommentsDarkMode {
-    background-color: rgb(83, 83, 83);
+    background: radial-gradient(rgb(24, 24, 24), rgb(83, 83, 83));
     width: 100%;
-    height: 3rem;
+    height: auto;
     position: relative;
     top: -3rem;
     border-bottom-left-radius: 2rem;

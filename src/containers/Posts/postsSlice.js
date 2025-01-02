@@ -92,10 +92,14 @@ const sliceOption = {
                 state.commentsIsLoading = false;
                 state.commentsHasError = true;
             }).addCase(loadComments.fulfilled, (state, action) => {
-                state.commentsIsLoading = false;
-                state.commentsHasError = false;
-                const { postId, comments } = action.payload;
-                state.comments[postId] = comments;
+                try {
+                    state.commentsIsLoading = false;
+                    state.commentsHasError = false;
+                    const { postId, comments } = action.payload;
+                    state.comments[postId] = comments;
+                } catch (error) {
+                    console.log(error);
+                };
             })
     }
 }
