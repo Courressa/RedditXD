@@ -6,7 +6,6 @@ import styles from "./ModeSetter.module.css";
 function ModeSetter() {
     const dispatch = useDispatch();
     const modeState = useSelector(selectModeState);
-    console.log("setter Mode?", modeState);
     const onClick = () => {
         dispatch(isDarkMode());
     }

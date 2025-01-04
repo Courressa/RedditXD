@@ -11,7 +11,6 @@ function Topic({topic, collectSelectedTopic, shouldDisplayTopic, darkModeSwitch}
 
     const handleClick = () => {
         if (shouldDisplayTopic) {
-            console.log("clicked", topic.data.url);
             collectSelectedTopic(topic.data.url);
         }
     }

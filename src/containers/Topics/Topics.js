@@ -18,8 +18,7 @@ function Topics({darkModeSwitch}) {
 
     useEffect(() => {
         dispatch(loadTopics());
-    }, [dispatch])
-    //console.log("selector topics  outside use effect", listTopics);
+    }, [dispatch]);
 
     const [shouldDisplayTopic, setShouldDisplayTopic] = useState(false);
     const handleClick = () => {

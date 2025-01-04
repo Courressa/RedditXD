@@ -12,15 +12,7 @@ import styles from "./FetchedComments.module.css";
 function FetchedComments({comments, darkModeSwitch}) {
     const commentLoading = useSelector(loadingComments);
     const commentError = useSelector(errorFoundInComments);
-    console.log("comments", comments)
-    /*let commentList;
-    if (comments) {
-        if (comments.body.includes("\n\nhttps")) {
-            commentList = `${comments.body}\n\n![Image](${comments.body.split('\n\n')[1]})`;
-        } else {
-            commentList = comments.body;
-        }
-    }*/
+    
     const [commentsSelected, setCommentsSelected] = useState(null);
     const handleReplyClick = (comment) => {
         setCommentsSelected(comment);

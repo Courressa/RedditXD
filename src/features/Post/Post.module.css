@@ -49,8 +49,10 @@
 }
 
 .media img, .mediaDarkMode img, .media video, .mediaDarkMode video {
-    width: 20rem;
+    width: 25rem;
     height: 100%;
+    border-radius: 1rem;
+    box-shadow: 0rem 0rem 1rem 0.3rem;
 }
 
 .richVideo {

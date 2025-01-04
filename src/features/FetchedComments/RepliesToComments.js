@@ -4,7 +4,6 @@ import remarkGfm from "remark-gfm";
 import styles from "./FetchedComments.module.css";
 
 function RepliesToComments({replies}) {
-    console.log("replies", replies);
     return (
         <div className={styles.repliesList}>
             {replies && Array.isArray(replies) ? (
@@ -13,7 +12,6 @@ function RepliesToComments({replies}) {
                     const imageUrl = body.includes("\n\nhttps") ? body.split("\n\n")[1] : null;
                     
                     const markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body.split("\n\n")[0];
-                    console.log("reply for name", reply.author);
                     return (
                         <div
                             key={reply.data.id}

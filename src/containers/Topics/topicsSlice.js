@@ -5,7 +5,6 @@ export const loadTopics = createAsyncThunk(
     'topics/loadTopics',
     async () => {
         const topicsObj = await getTopics();
-        console.log("state topics", topicsObj);
         return topicsObj;
     }
 );
