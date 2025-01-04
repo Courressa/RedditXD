@@ -5,11 +5,13 @@ import { useSelector } from "react-redux";
 import { RepliesToComments } from "./RepliesToComments";
 import { PointDown } from "../svg_icons/PointDown";
 import { loadingComments } from "../../containers/Posts/postsSlice";
+import { errorFoundInComments } from "../../containers/Posts/postsSlice";
 import { LoadingIcon } from "../LoadingIcon/LoadingIcon";
 import styles from "./FetchedComments.module.css";
 
 function FetchedComments({comments, darkModeSwitch}) {
-    const loading = useSelector(loadingComments);
+    const commentLoading = useSelector(loadingComments);
+    const commentError = useSelector(errorFoundInComments);
     console.log("comments", comments)
     /*let commentList;
     if (comments) {
@@ -36,52 +38,61 @@ function FetchedComments({comments, darkModeSwitch}) {
 
     return (
         <div className={commentListStyle}>
-            {loading ? (
-                <div className={darkModeSwitch ? styles.loadingCommentsDarkMode : styles.loadingComments}>
+            {commentLoading ? (
+                <div className={darkModeSwitch ? styles.loadingCommentsOrErrorDarkMode : styles.loadingCommentsOrError}>
                     <LoadingIcon />
-                </div> ) : (
-                comments && Array.isArray(comments) ? (
-                    comments.map(comment => {
-                        const body = comment.body || "";
-                        const imageUrl = body.includes("\n\nhttps") ? body.split("\n\n")[1] : null;
-                        const markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body.split("\n\n")[0];
-                        const replies = comment.replies;
+                </div>
+            ) : (
+                commentError ? (
+                    <p className={darkModeSwitch ? styles.loadingCommentsOrErrorDarkMode : styles.loadingCommentsOrError}>
+                        There was an issue with loading these comments.
+                    </p>
+                ) : (
+                    comments && Array.isArray(comments) ? (
+                        comments.map(comment => {
+                            const body = comment.body || "";
+                            const imageUrl = body.includes("\n\nhttps") ? body.split("\n\n")[1] : null;
+                            const markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body.split("\n\n")[0];
+                            const replies = comment.replies;
 
-                        return (
-                            <div key={comment.id}>
-                                <div className={styles.headComment}>
-                                    <h3>{comment.author}</h3>
-                                    <ReactMarkdown
-                                        remarkPlugins={[remarkGfm]}
-                                    >
-                                        {markdownContent}
-                                    </ReactMarkdown>
-                                    { (replies && (commentsSelected !== comment)) ? 
-                                        <div 
-                                            onClick={ () => handleReplyClick(comment)}
-                                            className={styles.commentRepliesDropIcon}
+                            return (
+                                <div key={comment.id}>
+                                    <div className={styles.headComment}>
+                                        <h3>{comment.author}</h3>
+                                        <ReactMarkdown
+                                            remarkPlugins={[remarkGfm]}
                                         >
-                                            <PointDown />
-                                            <p>replies</p>
-                                        </div> : null
+                                            {markdownContent}
+                                        </ReactMarkdown>
+                                        { (replies && (commentsSelected !== comment)) ? 
+                                            <div 
+                                                onClick={ () => handleReplyClick(comment)}
+                                                className={styles.commentRepliesDropIcon}
+                                            >
+                                                <PointDown />
+                                                <p>replies</p>
+                                            </div> : null
+                                        }
+                                    </div>
+                                    
+                                    {replies ? (
+                                        <div >
+                                            
+                                            {(commentsSelected === comment) && (
+                                                <RepliesToComments
+                                                    replies={comment.replies.data.children}
+                                                />
+                                            )}
+                                        </div>) : null
                                     }
                                 </div>
-                                
-                                {replies ? (
-                                    <div >
-                                        
-                                        {(commentsSelected === comment) && (
-                                            <RepliesToComments
-                                                replies={comment.replies.data.children}
-                                            />
-                                        )}
-                                    </div>) : null
-                                }
-                            </div>
-                        );
-                    })
-                ) : (
-                    <p className={darkModeSwitch ? styles.loadingCommentsDarkMode : styles.loadingComments}>No comments available.</p>
+                            );
+                        })
+                    ) : (
+                        <p className={darkModeSwitch ? styles.loadingCommentsOrErrorDarkMode : styles.loadingCommentsOrError}>
+                            No comments available.
+                        </p>
+                    )
                 )
             )}
         </div>

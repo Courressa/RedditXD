@@ -9,8 +9,8 @@ import styles from "./Posts.module.css";
 
 function Posts() {
     const postData = useSelector(selectPost);
-    const loading = useSelector(loadingPopular);
-    const error = useSelector(errorFound);
+    const postLoading = useSelector(loadingPopular);
+    const postError = useSelector(errorFound);
     const selectedTopics = useSelector(selectTopics);
     const sendUserSearch = useSelector(selectUserSearch);
     const userSearchClickPing = useSelector(selectUserSearchClick);
@@ -44,14 +44,22 @@ function Posts() {
 
     ////******TODO: DISABLE TOPIC SELECTION WHEN POSTS ARE LOADING*******//////
 
-    if (loading) {
+    if (postLoading) {
         return (
             <div className={styles.loadingOrError}>
                 <LoadingIcon />
             </div>
         )
-    } else if (error || !postData) {
-        return <h2>Oops! We ran into an issue with loading this data.</h2>
+    } else if (postError || !postData) {
+        return (
+            <div className={styles.loadingOrError}>
+                <h2>
+                    Oops! We ran into an issue with loading this data.
+                </h2>
+                <br/>
+                <h2>Please refresh the page or try again later.</h2>
+            </div>
+        )
     }
 
     return (

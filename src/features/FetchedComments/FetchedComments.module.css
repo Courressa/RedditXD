@@ -18,7 +18,7 @@
     transition: height 1s;
 }
 
-.loadingComments {
+.loadingCommentsOrError {
     background: radial-gradient(white, rgb(196, 196, 196));
     width: 100%;
     height: auto;
@@ -26,6 +26,7 @@
     top: -3rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
+    padding: 1.5rem;
 }
 
 .commentsList img, .RepliesList img, .commentsListDarkMode img {
@@ -88,7 +89,8 @@
     transition: height 1s;
 }
 
-.loadingCommentsDarkMode {
+.loadingCommentsOrErrorDarkMode {
+    text-align: center;
     background: radial-gradient(rgb(24, 24, 24), rgb(83, 83, 83));
     width: 100%;
     height: auto;
@@ -96,4 +98,5 @@
     top: -3rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
+    padding: 1.5rem;
 }
