@@ -1,5 +1,5 @@
-import bannerSliceReducer, { collectUserSearch, collectUserSearchClick } from './bannerSlice';
-import { render, screen, cleanup, waitFor } from '@testing-library/react';
+import bannerSliceReducer from './bannerSlice';
+import { cleanup } from '@testing-library/react';
 
 
 afterEach(cleanup);
