@@ -10,8 +10,8 @@ function RepliesToComments({replies}) {
                 replies.map(reply => {
                     const body = reply.data.body || "";
                     const imageUrl = body.includes("\n\nhttps") ? body.split("\n\n")[1] : null;
+                    const markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body;
                     
-                    const markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body.split("\n\n")[0];
                     return (
                         <div
                             key={reply.data.id}

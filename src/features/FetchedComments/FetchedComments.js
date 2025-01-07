@@ -43,13 +43,8 @@ function FetchedComments({comments, darkModeSwitch}) {
                     comments && Array.isArray(comments) ? (
                         comments.map(comment => {
                             const body = comment.body || "";
-                            const imageUrl = body.includes("\n\nhttps://i.redd.it") ? body.split("\n\n")[1] : null;
+                            const imageUrl = body.includes("\n\nhttps") ? body.split("\n\n")[1] : null;
                             const markdownContent = imageUrl ? `${body.split("\n\n")[0]}\n\n![Image](${imageUrl})` : body;
-                            if (imageUrl) {
-                                console.log("comment with url", comment);
-                                console.log("image url https://i.redd.it", imageUrl);
-                            }
-                            
                             const replies = comment.replies;
 
                             return (
