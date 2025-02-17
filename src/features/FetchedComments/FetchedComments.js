@@ -30,7 +30,7 @@ function FetchedComments({comments, darkModeSwitch}) {
 
     return (
         <div className={commentListStyle}>
-            {commentLoading ? (
+            {(commentLoading && !comments) ? (
                 <div className={darkModeSwitch ? styles.loadingCommentsOrErrorDarkMode : styles.loadingCommentsOrError}>
                     <LoadingIcon />
                 </div>
