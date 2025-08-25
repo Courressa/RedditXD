@@ -1,0 +1,10 @@
+export const loadPopular = jest.fn().mockReturnValue({ type: 'posts/loadPopular' });
+export const loadSelectedTopicPost = jest.fn().mockReturnValue({ type: 'posts/loadSelectedTopicPost' });
+export const loadUserSearch = jest.fn().mockReturnValue({ type: 'posts/loadUserSearch' });
+export const loadComments = jest.fn().mockReturnValue({ type: 'posts/loadComments' });
+export const selectPost = jest.fn().mockImplementation((state) => state.posts.posts);
+export const loadingPopular = jest.fn().mockImplementation((state) => state.posts.isLoading);
+export const errorFound = jest.fn().mockImplementation((state) => state.posts.hasError);
+export const selectComments = jest.fn().mockImplementation((state) => state.posts.comments);
+export const loadingComments = jest.fn().mockImplementation((state) => state.posts.commentsIsLoading);
+export const errorFoundInComments = jest.fn().mockImplementation((state) => state.posts.commentsHasError);

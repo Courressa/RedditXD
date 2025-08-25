@@ -11,3 +11,17 @@
     align-content: center;
     width: 100%;
 }
+
+/*Responsiveness*/
+
+@media only screen and (max-width: 1024px) {
+    .posts {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .posts {
+        width: 80%;
+    }
+}

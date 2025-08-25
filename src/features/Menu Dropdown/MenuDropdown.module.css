@@ -1,0 +1,84 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 65%;
+    z-index: 5;
+    width: 35%;
+    background-color: white;
+    height: 30rem;
+    padding: 1rem 0rem;
+    border-radius: 0.7rem 0 0.7rem 0.7rem;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.menuNotVisible {
+    opacity: 0;
+}
+
+.topicsMenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.eachMainTopicsMenu {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin: 1rem 1rem 0rem 1rem;
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+    margin-bottom: 1rem;
+}
+
+.eachMainTopicsMenu:hover {
+    cursor: pointer;
+    background-color: rgb(212, 212, 212);
+}
+
+.eachMainTopicsMenu:active {
+    background-color: rgb(156, 156, 156);
+}
+
+.topicsMenuDropDown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    margin: 1rem 1rem 0rem 1rem;
+    border-radius: 0.7rem;
+}
+
+.topicsMenuDropDown:hover {
+    cursor: pointer;
+    background-color: rgb(212, 212, 212);
+}
+
+.topicsMenuTitle {
+    display: flex;
+    align-items: center;
+}
+
+.mappedMainTopicsMenu {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 14rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(175, 175, 175) rgba(128, 128, 128, 0);
+}
+
+.eachMainTopicsMenu h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 1rem;
+}
+
+.topicsMenuTitle h3 {
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+/*Dark Mode*/
+

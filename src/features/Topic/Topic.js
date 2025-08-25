@@ -33,6 +33,7 @@ function Topic({topic, collectSelectedTopic, shouldDisplayTopic, darkModeSwitch}
     } else if (!shouldDisplayTopic) {
         topicListStyle = styles.topicListNotVisible;
     };
+    
     return (
         <div 
             className={topicListStyle}

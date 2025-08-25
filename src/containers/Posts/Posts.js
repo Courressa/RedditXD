@@ -63,7 +63,7 @@ function Posts() {
     }
 
     return (
-        <div className={styles.posts}>
+        <div data-testid="posts" className={styles.posts}>
             {postData.map((postArr) => (
                 <Post 
                     key={postArr.data.id}

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { SearchBar } from "../../features/SearchBar/SearchBar";
 import { ModeSetter } from "../../features/ModeSetter/ModeSetter";
-import { collectUserSearch, collectUserSearchClick } from "./bannerSlice";
+import { collectUserSearch, collectUserSearchClick, collectmenuDropdownClick } from "./bannerSlice";
 import styles from "./Banner.module.css";
 
 function Banner({darkModeSwitch}) {
@@ -11,12 +11,17 @@ function Banner({darkModeSwitch}) {
     const userSearch = (toSearch) => {
         dispatch(collectUserSearch(toSearch));
     };
+
     const userSearchClick = () => {
         dispatch(collectUserSearchClick());
-    }
+    };
+
+    const menuDropdownClick = () => {
+        dispatch(collectmenuDropdownClick());
+    };
 
     return (
-        <div className={darkModeSwitch ? styles.bannerDarkMode : styles.banner}>
+        <div data-testid="banner" className={darkModeSwitch ? styles.bannerDarkMode : styles.banner}>
             <div className={styles.logo}>
                 <img src={require("../../images/Logo1.png")} alt="RedditXD Logo" />
                 <div className={styles.logo}>
@@ -31,9 +36,18 @@ function Banner({darkModeSwitch}) {
                     userSearchClickCollected={userSearchClick}
                 />
             </div>
-            <div className={styles.modeSetterComp}>
-                <ModeSetter />
+            <div>
+                <div className={styles.modeSetterComp}>
+                    <ModeSetter />
+                </div>
+                <div
+                    className={styles.menu}
+                    onClick={menuDropdownClick}
+                >
+                    <button>Drop Down</button>
+                </div>
             </div>
+            
         </div>
     );
 };

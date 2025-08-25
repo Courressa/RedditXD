@@ -50,6 +50,7 @@ function Post({post, collectPostIdAndSubreddit}) {
         };
     }, [post.data.post_hint, post.data.media])
 
+    /////SET UP REDDIT GALLERY AND SELFTEXT ///////
     try {
         //shows image
         if (post.data.post_hint === "image" ) {
@@ -72,13 +73,21 @@ function Post({post, collectPostIdAndSubreddit}) {
                     <a href={post.data.url} target="_blank">{post.data.url}</a>
                 </div>
             );
-        } else if (post.data.thumbnail === "self") {
+        } else if ((post.data.thumbnail === "self") && (typeof post.data.selftext === "string")) {
+            console.log("markdown stuff", post.data);
             postData = (
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                        {post.data.selftext}
-                    </ReactMarkdown>);
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {post.data.selftext}
+                </ReactMarkdown>
+            );
         } else if (post.data.url.includes("reddit.com/gallery")) {
-            postData = <img src={post.data.thumbnail}/>;
+            postData = (
+                <div className={styles.gallery}>
+                    {post.data.selftext ? <p>{post.data.selftext}</p> : null}
+                    <br/>
+                    <img src={post.data.thumbnail}/>
+                </div>
+            );
         } else {
             postData = <a href={post.data.url} target="_blank">{post.data.url}</a>;
         };

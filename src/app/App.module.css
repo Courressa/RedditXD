@@ -19,9 +19,11 @@ h1 {
 h2 {
     font-size: 1.2rem;
 }
+
 h3 {
     font-size: 0.9rem;
 }
+
 h4 {
     font-size: 0.7rem;
 }
@@ -50,10 +52,35 @@ header {
     height: 100%;
 }
 
+.contentWithMenu {
+    display: none;
+}
+
+.menuDropdown {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.534);
+    z-index: 3;
+}
+
+
+
 /*Dark Mode*/
 
 .appDarkMode {
     transition: all 1s;
     background-color: rgb(24, 24, 24);
     color: rgb(243, 243, 243);
+}
+
+@media only screen and (max-width: 768px) {
+    .content {
+        display: none;
+    }
+
+    .contentWithMenu {
+        display: flex;
+    height: 100%;
+    }
 }

@@ -5,8 +5,7 @@ export const bannerSlice = createSlice({
     initialState: {
         userSearch: "",
         userSearchClick: false,
-        darkMode: false,
-        
+        menuDropdown: false,
     },
     reducers: {
         collectUserSearch: (state, action) => {
@@ -18,13 +17,17 @@ export const bannerSlice = createSlice({
             } else if (state.userSearchClick === true) {
                 state.userSearchClick = false;
             }
+        },
+        collectmenuDropdownClick: (state) => {
+            state.menuDropdown = !state.menuDropdown;
         }
     }
 });
 
 export const selectUserSearch = (state) => state.banner.userSearch;
 export const selectUserSearchClick = (state) => state.banner.userSearchClick;
+export const selectMenuDropdownClick = (state) => state.banner.menuDropdown;
 
-export const { collectUserSearch, collectUserSearchClick } = bannerSlice.actions;
+export const { collectUserSearch, collectUserSearchClick, collectmenuDropdownClick } = bannerSlice.actions;
 
 export default bannerSlice.reducer;

@@ -12,10 +12,10 @@ export async function getPopular() {
         if (response.ok) {
             const jsonResponse = await response.json();
             const popular = jsonResponse.data.children;
-            
             return popular;
         }
     } catch (error) {
+        console.log("popular is NOT Loading:");
         console.log(error);
     }
 };

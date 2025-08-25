@@ -5,12 +5,12 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.5.2",
-    "hls.js": "^1.5.17",
+    "hls.js": "^1.5.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-markdown": "^6.0.3",
+    "react-markdown": "^8.0.7",
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.28.0",
     "react-scripts": "5.0.1",
@@ -42,11 +42,12 @@
     ]
   },
   "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    },
     "transformIgnorePatterns": [
-      "/node_modules/(?!remark-gfm|micromark-extension-gfm|micromark-util-combine-extensions|micromark-util-chunked|micromark-util-character|micromark-util-sanitize-uri|micromark-util-encode|micromark-core-commonmark|micromark-util-classify-character|micromark-util-resolve-all|micromark-factory-space|decode-named-character-reference|character-entities|micromark-util-subtokenize|micromark-factory-destination|micromark-factory-label|micromark-factory-title|micromark-factory-whitespace|micromark-util-normalize-identifier|micromark-util-html-tag-name|mdast-util-gfm|ccount|mdast-util-find-and-replace|escape-string-regexp|unist-util-visit-parents|unist-util-is|mdast-util-to-markdown|micromark-util-decode-string|micromark-util-decode-numeric-character-reference|markdown-table)"
+      "/node_modules/(?!(react-markdown|unist-util-|mdast-util-|remark-))/"
     ]
+  },
+  "devDependencies": {
+    "redux-mock-store": "^1.5.5",
+    "redux-thunk": "^2.4.2"
   }
 }

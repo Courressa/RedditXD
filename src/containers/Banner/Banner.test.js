@@ -7,9 +7,9 @@ afterEach(cleanup);
 it('should handle initial state', () => {
     
     expect(bannerSliceReducer(undefined, { type: 'unknown' })).toEqual({
+        menuDropdown: false,
         userSearch: "",
         userSearchClick: false,
-        darkMode: false,
     });
     
     

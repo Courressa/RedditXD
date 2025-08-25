@@ -9,6 +9,7 @@ import { TopicsIcons } from "../../features/svg_icons/TopicsIcons";
 import styles from "./Topics.module.css";
 
 function Topics({darkModeSwitch}) {
+    console.log('Topics darkModeSwitch:', darkModeSwitch);
     const dispatch = useDispatch();
     const listTopics = useSelector(selectListTopics);
     const collectSelectedTopic = (topic) => {
@@ -89,7 +90,7 @@ function Topics({darkModeSwitch}) {
         
     */
     return (
-        <div className={darkModeSwitch ? styles.topicsDarkMode : styles.topics}>
+        <div data-testid="topics" className={darkModeSwitch ? styles.topicsDarkMode : styles.topics}>
             <div className={styles.mainTopics}>
                 <div
                     className={darkModeSwitch ? styles.eachMainTopicsDarkMode : styles.eachMainTopics}
