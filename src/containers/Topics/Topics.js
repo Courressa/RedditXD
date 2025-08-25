@@ -9,7 +9,6 @@ import { TopicsIcons } from "../../features/svg_icons/TopicsIcons";
 import styles from "./Topics.module.css";
 
 function Topics({darkModeSwitch}) {
-    console.log('Topics darkModeSwitch:', darkModeSwitch);
     const dispatch = useDispatch();
     const listTopics = useSelector(selectListTopics);
     const collectSelectedTopic = (topic) => {

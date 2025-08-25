@@ -72,6 +72,7 @@ header {
     transition: all 1s;
     background-color: rgb(24, 24, 24);
     color: rgb(243, 243, 243);
+    text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
@@ -81,6 +82,6 @@ header {
 
     .contentWithMenu {
         display: flex;
-    height: 100%;
+        height: 100%;
     }
 }
