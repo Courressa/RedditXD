@@ -92,7 +92,7 @@ function MenuDropdown({darkModeSwitch, menuDropdownSwitch}) {
                 </div>
                 <div
                     onClick={handleClick}
-                    className={darkModeSwitch ? styles.topicsDropDownDarkMode : styles.topicsMenuDropDown}
+                    className={darkModeSwitch ? styles.topicsMenuDropDownDarkMode : styles.topicsMenuDropDown}
                 >
                     <div className={styles.topicsMenuTitle} >
                         <TopicsIcons

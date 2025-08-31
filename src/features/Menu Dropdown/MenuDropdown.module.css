@@ -82,3 +82,61 @@
 
 /*Dark Mode*/
 
+.menuDarkMode {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 65%;
+    z-index: 5;
+    width: 35%;
+    background-color: rgb(0, 0, 0);
+    height: 30rem;
+    padding: 1rem 0rem;
+    border-radius: 0.7rem 0 0.7rem 0.7rem;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.topicsMenuDarkMode {
+    display: flex;
+    flex-direction: column;
+}
+
+.eachMainTopicsMenuDarkMode {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin: 1rem 1rem 0rem 1rem;
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+    margin-bottom: 1rem;
+}
+
+.eachMainTopicsMenuDarkMode:hover {
+    cursor: pointer;
+    background-color: rgb(51, 51, 51);
+}
+
+.eachMainTopicsMenuDarkMode:active {
+    background-color: rgb(156, 156, 156);
+}
+
+.topicsMenuDropDownDarkMode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    margin: 1rem 1rem 0rem 1rem;
+    border-radius: 0.7rem;
+}
+
+.topicsMenuDropDownDarkMode:hover {
+    cursor: pointer;
+    background-color: rgb(51, 51, 51);
+}
+
+.eachMainTopicsMenuDarkMode h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 1rem;
+}

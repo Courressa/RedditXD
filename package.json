@@ -49,5 +49,6 @@
   "devDependencies": {
     "redux-mock-store": "^1.5.5",
     "redux-thunk": "^2.4.2"
-  }
+  },
+  "proxy": "https://www.reddit.com"
 }

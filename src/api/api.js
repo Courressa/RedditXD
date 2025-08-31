@@ -2,18 +2,21 @@ const appBaseURL = "https://www.reddit.com";
 
 export async function getPopular() {
     const popularEndpoint = "/r/popular.json";
-    const urlToFetch = `${appBaseURL}${popularEndpoint}`;
+    const urlToFetch = `${popularEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
-            method: "GET"
+            method: "GET",
+            headers: {
+                "Accept": "application/json"  // This is key for CRA proxy to forward the request
+            }
         })
 
         if (response.ok) {
             const jsonResponse = await response.json();
             const popular = jsonResponse.data.children;
             return popular;
-        }
+        } 
     } catch (error) {
         console.log("popular is NOT Loading:");
         console.log(error);
@@ -42,11 +45,14 @@ export async function getPopular() {
 
 export async function getTopics() {
     const topicsEndpoint = `/reddits.json`;
-    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+    const urlToFetch = `${topicsEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
-            method: "GET"
+            method: "GET",
+            headers: {
+                "Accept": "application/json"  // This is key for CRA proxy to forward the request
+            }
         })
 
         if (response.ok) {
@@ -66,7 +72,7 @@ export async function getTopics() {
 
 export async function getPostBasedOnTopic(topic) {
     const topicsEndpoint = `${topic}.json`;
-    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+    const urlToFetch = `${topicsEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
@@ -88,7 +94,7 @@ export async function getPostBasedOnTopic(topic) {
 
 export async function getSearch(userSearch) {
     const topicsEndpoint = `/search.json?q=${userSearch}`;
-    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+    const urlToFetch = `${topicsEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
@@ -110,7 +116,7 @@ export async function getSearch(userSearch) {
 
 export async function getCommentListForPost(subreddit, postId) {
     const topicsEndpoint = `/${subreddit}/comments/${postId}.json`;
-    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+    const urlToFetch = `${topicsEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
