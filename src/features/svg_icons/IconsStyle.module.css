@@ -86,6 +86,29 @@
     stroke-width: 0.6rem;
 }
 
+.menu {
+    width: 2.5rem;
+    height: 100%;
+    margin-right: 0.5rem;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+}
+
+.menu:hover {
+    cursor: pointer;
+    background-color: rgb(196, 196, 196);
+}
+
+.menu:active {
+    padding: 0.5rem;
+    background-color: rgb(255, 255, 255);
+}
+
+.menuActive {
+    background-color: rgb(196, 196, 196);
+}
+
+
 /*Dark Mode*/
 
 .arrowDarkMode {
@@ -134,4 +157,26 @@
 
 .topicIconsActiveDarkMode {
     color: rgb(255, 255, 255);
+}
+
+.menuDarkMode {
+    width: 2.5rem;
+    height: 100%;
+    margin-right: 0.5rem;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+}
+
+.menuDarkMode:hover {
+    cursor: pointer;
+    background-color: rgb(77, 77, 77);
+}
+
+.menuDarkMode:active {
+    padding: 0.5rem;
+    background-color: rgb(24, 24, 24);
+}
+
+.menuActiveDarkMode {
+    background-color: rgb(77, 77, 77);
 }

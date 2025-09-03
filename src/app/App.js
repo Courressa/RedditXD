@@ -29,7 +29,7 @@ function App() {
         </div>
         <div className={styles.contentWithMenu}>
           {menuDropdownState && (
-            <div className={styles.menuDropdown}>
+            <div className={darkModeState ? styles.menuDropdownDarkMode : styles.menuDropdown}>
               <MenuDropdown
                 darkModeSwitch={darkModeState}
                 menuDropdownSwitch={menuDropdownState}

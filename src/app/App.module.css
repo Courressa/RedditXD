@@ -64,8 +64,6 @@ header {
     z-index: 3;
 }
 
-
-
 /*Dark Mode*/
 
 .appDarkMode {
@@ -75,7 +73,15 @@ header {
     text-align: center;
 }
 
-@media only screen and (max-width: 768px) {
+.menuDropdownDarkMode {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(224, 224, 224, 0.534);
+    z-index: 3;
+}
+
+@media only screen and (max-width: 884px) {
     .content {
         display: none;
     }

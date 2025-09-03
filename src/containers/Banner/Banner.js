@@ -1,12 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from 'react-redux';
 import { SearchBar } from "../../features/SearchBar/SearchBar";
 import { ModeSetter } from "../../features/ModeSetter/ModeSetter";
-import { collectUserSearch, collectUserSearchClick, collectmenuDropdownClick } from "./bannerSlice";
+import { Menu } from "../../features/svg_icons/Menu";
+import { collectUserSearch, collectUserSearchClick, collectmenuDropdownClick, selectMenuDropdownClick } from "./bannerSlice";
 import styles from "./Banner.module.css";
 
 function Banner({darkModeSwitch}) {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const menuDropdownState = useSelector(selectMenuDropdownClick);
 
     const userSearch = (toSearch) => {
         dispatch(collectUserSearch(toSearch));
@@ -44,7 +47,10 @@ function Banner({darkModeSwitch}) {
                     className={styles.menu}
                     onClick={menuDropdownClick}
                 >
-                    <button>Drop Down</button>
+                    <Menu 
+                        darkModeSwitch={darkModeSwitch}
+                        menuDropdownState={menuDropdownState}
+                    />
                 </div>
             </div>
             

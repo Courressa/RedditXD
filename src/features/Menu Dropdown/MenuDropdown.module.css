@@ -5,12 +5,12 @@
     left: 65%;
     z-index: 5;
     width: 35%;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     height: 30rem;
     padding: 1rem 0rem;
     border-radius: 0.7rem 0 0.7rem 0.7rem;
     opacity: 1;
-    transition: opacity 1s;
+    transition: all 1s ease-in-out;
 }
 
 .menuNotVisible {
@@ -89,12 +89,12 @@
     left: 65%;
     z-index: 5;
     width: 35%;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(24, 24, 24);
     height: 30rem;
     padding: 1rem 0rem;
     border-radius: 0.7rem 0 0.7rem 0.7rem;
     opacity: 1;
-    transition: opacity 1s;
+    transition: all 1s ease-in-out;
 }
 
 .topicsMenuDarkMode {
