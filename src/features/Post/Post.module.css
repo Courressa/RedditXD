@@ -88,6 +88,7 @@
     background-color: rgb(230, 230, 230);
     border-radius: 2rem;
     height: 2.5rem;
+    transition: all 1s;
 }
 
 .commentsIconAndNum {
@@ -98,6 +99,7 @@
     border-radius: 2rem;
     height: 2.5rem;
     width: 5rem;
+    transition: all 1s;
 }
 
 .commentsIconAndNum:hover {
@@ -160,6 +162,7 @@
     background-color: rgb(7, 7, 7);
     border-radius: 2rem;
     height: 2.5rem;
+    transition: all 1s;
 }
 
 .commentsIconAndNumDarkMode {
@@ -170,6 +173,7 @@
     border-radius: 2rem;
     height: 2.5rem;
     width: 5rem;
+    transition: all 1s;
 }
 
 .commentsIconAndNumDarkMode:hover {
