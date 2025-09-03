@@ -80,6 +80,15 @@
     margin-left: 1rem;
 }
 
+.dropDownArrowUp {
+    transition: rotate 0.5s ease-out;
+}
+
+.dropDownArrowDown {
+    transition: rotate 0.2s ease-out;
+    rotate: x -180deg;
+}
+
 /*Dark Mode*/
 
 .menuDarkMode {
