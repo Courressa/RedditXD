@@ -51,10 +51,15 @@ function Post({post, collectPostIdAndSubreddit}) {
     }, [post.data.post_hint, post.data.media])
 
     try {
+        //Shortens title to use in image alt text
+        const shortTitle = post.data.title.length > 50 ? post.data.title.substring(0, 47) + '...' : post.data.title;
         //Shows image/media
         if (post.data.post_hint === "image" ) {
             const fetchedImage = post.data.url;
-            postData = <img src={fetchedImage} />;
+            //Checks if the URL is a valid image
+            const isValidImage = fetchedImage.match(/\.(jpg|jpeg|png|gif|webp)$/i);
+            const altText = isValidImage ? `Image from ${post.data.subreddit_name_prefixed} showing ${shortTitle}` : '';
+            postData = <img src={fetchedImage} alt={altText} />;
         } else if (post.data.post_hint === "hosted:video") {
             postData = <video 
                 ref={videoRef} 
@@ -66,10 +71,11 @@ function Post({post, collectPostIdAndSubreddit}) {
                 Your browser does not support the video tag.
             </video>;
         } else if (post.data.post_hint === "rich:video") {
+            const altText = `Thumbnail for video from ${post.data.subreddit_name_prefixed} showing ${shortTitle}`;
             postData = (
                 <div className={styles.richVideo}>
-                    <img src={post.data.media.oembed.thumbnail_url}/>
-                    <a href={post.data.url} target="_blank">{post.data.url}</a>
+                    <img src={post.data.media.oembed.thumbnail_url} alt={altText}/>
+                    <a href={post.data.url} target="_blank" rel="noreferrer">{post.data.url}</a>
                 </div>
             );
         } else if ((post.data.thumbnail === "self") && (typeof post.data.selftext === "string")) {
@@ -79,15 +85,17 @@ function Post({post, collectPostIdAndSubreddit}) {
                 </ReactMarkdown>
             );
         } else if (post.data.url.includes("reddit.com/gallery")) {
+            const isValidThumbnail = post.data.thumbnail && post.data.thumbnail !== 'self' && post.data.thumbnail !== 'default';
+            const altText = isValidThumbnail ? `Thumbnail from ${post.data.subreddit_name_prefixed} showing ${shortTitle}` : '';
             postData = (
                 <div className={styles.gallery}>
                     {post.data.selftext ? <p>{post.data.selftext}</p> : null}
                     <br/>
-                    <img src={post.data.thumbnail}/>
+                    <img src={post.data.thumbnail} alt={altText}/>
                 </div>
             );
         } else {
-            postData = <a href={post.data.url} target="_blank">{post.data.url}</a>;
+            postData = <a href={post.data.url} target="_blank" rel="noreferrer">{post.data.url}</a>;
         };
     } catch (error) {
         console.log(error);

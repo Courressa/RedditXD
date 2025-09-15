@@ -60,8 +60,6 @@ export async function getTopics() {
     }
 };
 
-/****** SETUP ERROR DISPLAY IF ELSE ******/
-
 export async function getPostBasedOnTopic(topic) {
     const topicsEndpoint = `/${topic}.json`;
     const urlToFetch = `${appBaseURL}${topicsEndpoint}`;

@@ -4,9 +4,10 @@ import styles from "./LoadingIcon.module.css"
 function LoadingIcon() {
     const [displayWord, setDisplayWord] = useState('')
     let loading = "...."; //first dot is a placeholder as index 0 is skipped
-    let i = 0;
 
     useEffect(() => {
+        let i = 0;
+
         const typingSetup = setInterval(() => {
             if (i <= loading.length) {
                 if (loading[i]) {
@@ -23,8 +24,10 @@ function LoadingIcon() {
         }, 500)
 
         return () => clearInterval(typingSetup)
-    }, [i, loading])
+    }, [loading])
+
     const typeWriter = displayWord.split('');
+
     return (
         <div className={styles.loadingIcons}>
             <img src={require("../../images/Logo1.png")} alt="RedditXD Logo" />
