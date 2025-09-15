@@ -2,13 +2,6 @@ import React from "react";
 import styles from "./Topic.module.css";
 
 function Topic({topic, collectSelectedTopic, shouldDisplayTopic, darkModeSwitch}) {
-   /* let addSubtopic;
-    if (topic.subtopics) {
-        addSubtopic = topic.subtopics.map((subtopic, index) => (
-            <h5 key={index} >{subtopic}</h5>
-        ));
-    }*/
-
     const handleClick = () => {
         if (shouldDisplayTopic) {
             collectSelectedTopic(topic.data.url);

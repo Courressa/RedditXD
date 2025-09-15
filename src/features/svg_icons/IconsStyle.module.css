@@ -108,7 +108,6 @@
     background-color: rgb(196, 196, 196);
 }
 
-
 /*Dark Mode*/
 
 .arrowDarkMode {
@@ -180,6 +179,8 @@
 .menuActiveDarkMode {
     background-color: rgb(77, 77, 77);
 }
+
+/*Responsiveness*/
 
 @media only screen and (max-width: 579px) {
     .menu, .menuDarkMode {

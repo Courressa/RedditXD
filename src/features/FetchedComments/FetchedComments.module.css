@@ -103,6 +103,8 @@
     padding: 1.5rem;
 }
 
+/*Responsiveness*/
+
 @media only screen and (max-width: 884px) {
     .headComment {
         margin: 1rem 4.5rem;

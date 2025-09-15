@@ -5,7 +5,6 @@ export const loadPopular = createAsyncThunk(
     'posts/loadPopular',
     async () =>  {
         const popularObj = await getPopular();
-        //console.log("popobj", popularObj);
         return popularObj
     }
 );
@@ -14,7 +13,6 @@ export const loadSelectedTopicPost = createAsyncThunk(
     'topics/loadSelectedTopicPost',
     async (topic) => {
         const topicsObj = await getPostBasedOnTopic(topic);
-        //console.log("state topics", topicsObj);
         return topicsObj;
     }
 );
@@ -23,7 +21,6 @@ export const loadUserSearch = createAsyncThunk(
     'topics/loadUserSearch',
     async (userSearch) => {
         const searchObj = await getSearch(userSearch);
-        //console.log("user search", searchObj);
         return searchObj;
     }
 );
@@ -32,7 +29,6 @@ export const loadComments = createAsyncThunk(
    'topics/loadComments',
     async ({subreddit, postId}) => {
         const commentsObj = await getCommentListForPost(subreddit, postId);
-        //console.log("post comments", commentsObj);
         return commentsObj;
     } 
 )

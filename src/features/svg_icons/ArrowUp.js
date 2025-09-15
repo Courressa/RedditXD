@@ -13,7 +13,6 @@ function ArrowUp ({arrowUpState, darkModeSwitch}) {
     }
 
     let arrowUpStyle;
-    let arrowUpPathStyle;
 
     if ((arrowUpState === true) && (!darkModeSwitch)) {
         arrowUpStyle = styles.arrowUpClicked;

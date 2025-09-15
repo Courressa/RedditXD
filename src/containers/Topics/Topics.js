@@ -38,56 +38,7 @@ function Topics({darkModeSwitch}) {
         }
         setSeletedMainTopic(event.target.id);
     }
-    //console.log("clicked?", shouldDisplayTopic);
-   /* let subtopic;
-   redditMainTopics.map(topic =>
-    {switch (topic) {
-        case "Internet Culture":
-            subtopic = internetCultureSubTopics.map(ICsubtopic => (
-                <div>{ICsubtopic}</div>
-            ));
-            break;
-        case "Games":
-            subtopic = gamesSubTopics.map(Gsubtopic => (
-                <div>{Gsubtopic}</div>
-            ));
-            break;
-        case "Q&As":
-            subtopic = qAndAsSubTopics.map(ICsubtopic => (
-                <div>{ICsubtopic}</div>
-            ));
-            break;
-        case "Technology":
-            subtopic = technologySubTopics.map(ICsubtopic => (
-                <div>{ICsubtopic}</div>
-            ));
-            break;
-        case "Pop Culture":
-            subtopic = popCultureSubTopics.map(ICsubtopic => (
-                <div>{ICsubtopic}</div>
-            ));
-            break;
-        case "Movies & TV":
-            subtopic = moviesAndTVSubTopics.map(ICsubtopic => (
-                <div>{ICsubtopic}</div>
-            ));
-            break;
-        default:
-            break;
-    }}
-    );
-    console.log(subtopic);*/
-    //{shouldDisplayTopic ? <PointUp /> : <PointDown />}
-    /*<div className={shouldDisplayTopic ? styles.dropDownArrowUp : styles.dropDownArrowDown} >
-            <PointDown />
-        </div> 
-    {shouldDisplayTopic ? <PointUp
-                    shouldDisplayTopic={shouldDisplayTopic}
-                /> : <PointDown
-                    shouldDisplayTopic={shouldDisplayTopic}
-                />}    
-        
-    */
+    
     return (
         <div data-testid="topics" className={darkModeSwitch ? styles.topicsDarkMode : styles.topics}>
             <div className={styles.mainTopics}>

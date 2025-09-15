@@ -81,6 +81,8 @@ header {
     z-index: 3;
 }
 
+/*Responsiveness*/
+
 @media only screen and (max-width: 884px) {
     .content {
         display: none;

@@ -50,9 +50,8 @@ function Post({post, collectPostIdAndSubreddit}) {
         };
     }, [post.data.post_hint, post.data.media])
 
-    /////SET UP REDDIT GALLERY AND SELFTEXT ///////
     try {
-        //shows image
+        //Shows image/media
         if (post.data.post_hint === "image" ) {
             const fetchedImage = post.data.url;
             postData = <img src={fetchedImage} />;
@@ -108,7 +107,7 @@ function Post({post, collectPostIdAndSubreddit}) {
         const postTimestamp = post.data.created_utc;
         const currentTime = Date.now();
 
-        // Convert seconds to milliseconds
+        //Converts seconds to milliseconds
         const postTime = postTimestamp * 1000;
 
         const millisecondsDifference = currentTime - postTime;
@@ -120,9 +119,9 @@ function Post({post, collectPostIdAndSubreddit}) {
         } else if (hoursDifference <= 1) {
             output = `${Math.floor(hoursDifference)} hr. ago`;
         } else {
-            // Convert the timestamp to a Date object
+            //Converts the timestamp to a Date object
             const postDate = new Date(postTime);
-            // Format the date to a readable string
+            //Formats the date to a readable string
             output = postDate.toLocaleDateString();
         };
 

@@ -7,7 +7,6 @@ import { Topics } from '../containers/Topics/Topics';
 import { Posts } from '../containers/Posts/Posts';
 import { MenuDropdown } from '../features/Menu Dropdown/MenuDropdown';
 import styles from "./App.module.css"
-import './App.css';
 
 function App() {
   const darkModeState = useSelector(selectModeState);

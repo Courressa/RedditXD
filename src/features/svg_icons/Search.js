@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./IconsStyle.module.css";
 
-function Search () {return (
+function Search () {
+    return (
         <div>
             <svg
                 className={styles.search}

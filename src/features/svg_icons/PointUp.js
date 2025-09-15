@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./IconsStyle.module.css";
 
 function PointUp ({darkModeSwitch}) {
-    
     return (
         <div>
             <svg

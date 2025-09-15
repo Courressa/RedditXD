@@ -29,6 +29,8 @@
     background-color: rgb(253, 253, 253);
 }
 
+/*Responsiveness*/
+
 @media only screen and (max-width: 470px) {
     .searchBar {
         padding: 0.5rem;

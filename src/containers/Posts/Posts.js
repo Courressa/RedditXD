@@ -42,8 +42,6 @@ function Posts() {
         dispatch(loadComments({ subreddit: postSubreddit, postId }));
     };
 
-    ////******TODO: DISABLE TOPIC SELECTION WHEN POSTS ARE LOADING*******//////
-
     if (postLoading) {
         return (
             <div className={styles.loadingOrError}>

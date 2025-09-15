@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./IconsStyle.module.css";
 
-function Comments ({darkModeSwitch}) {return (
+function Comments ({darkModeSwitch}) {
+    return (
         <div>
             <svg
                 className={styles.comment}

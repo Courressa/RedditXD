@@ -2,14 +2,11 @@ const appBaseURL = "https://www.reddit.com";
 
 export async function getPopular() {
     const popularEndpoint = "/r/popular.json";
-    const urlToFetch = `${popularEndpoint}`;
+    const urlToFetch = `${appBaseURL}${popularEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"  // This is key for CRA proxy to forward the request
-            }
+            method: "GET"
         })
 
         if (response.ok) {
@@ -45,14 +42,11 @@ export async function getPopular() {
 
 export async function getTopics() {
     const topicsEndpoint = `/reddits.json`;
-    const urlToFetch = `${topicsEndpoint}`;
+    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"  // This is key for CRA proxy to forward the request
-            }
+            method: "GET"
         })
 
         if (response.ok) {
@@ -60,8 +54,6 @@ export async function getTopics() {
             const topics = jsonResponse.data.children;
             
             return topics;
-        } else {
-
         }
     } catch (error) {
         console.log(error);
@@ -71,8 +63,8 @@ export async function getTopics() {
 /****** SETUP ERROR DISPLAY IF ELSE ******/
 
 export async function getPostBasedOnTopic(topic) {
-    const topicsEndpoint = `${topic}.json`;
-    const urlToFetch = `${topicsEndpoint}`;
+    const topicsEndpoint = `/${topic}.json`;
+    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
@@ -84,8 +76,6 @@ export async function getPostBasedOnTopic(topic) {
             const topics = jsonResponse.data.children;
             
             return topics;
-        } else {
-
         }
     } catch (error) {
         console.log(error);
@@ -94,7 +84,7 @@ export async function getPostBasedOnTopic(topic) {
 
 export async function getSearch(userSearch) {
     const topicsEndpoint = `/search.json?q=${userSearch}`;
-    const urlToFetch = `${topicsEndpoint}`;
+    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
@@ -106,8 +96,6 @@ export async function getSearch(userSearch) {
             const topics = jsonResponse.data.children;
             
             return topics;
-        } else {
-
         }
     } catch (error) {
         console.log(error);
@@ -116,7 +104,7 @@ export async function getSearch(userSearch) {
 
 export async function getCommentListForPost(subreddit, postId) {
     const topicsEndpoint = `/${subreddit}/comments/${postId}.json`;
-    const urlToFetch = `${topicsEndpoint}`;
+    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
 
     try {
         const response = await fetch(urlToFetch, {
@@ -125,12 +113,9 @@ export async function getCommentListForPost(subreddit, postId) {
 
         if (response.ok) {
             const jsonResponse = await response.json();
-            //console.log("post comments fetched", jsonResponse);
             const comments = jsonResponse[1].data.children.map(child => child.data);
             
             return {postId, comments};
-        } else {
-
         }
     } catch (error) {
         console.log(error);
