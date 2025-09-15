@@ -1,0 +1,5 @@
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"  # Ensures node-fetch installs
+
+[functions]
+  directory = "netlify/functions"

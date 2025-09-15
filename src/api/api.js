@@ -1,8 +1,18 @@
 const appBaseURL = "https://www.reddit.com";
 
+// Helper to get the fetch URL based on environment
+const getFetchUrl = (endpoint) => {
+  if (process.env.NODE_ENV === 'development') {
+    return endpoint; // Uses package.json proxy for local dev
+  }
+  // Production: Use Netlify Function with encoded path
+  const encodedPath = encodeURIComponent(endpoint);
+  return `/.netlify/functions/reddit-proxy?path=${encodedPath}`;
+};
+
 export async function getPopular() {
     const popularEndpoint = "/r/popular.json";
-    const urlToFetch = `${appBaseURL}${popularEndpoint}`;
+    const urlToFetch = getFetchUrl(popularEndpoint);
 
     try {
         const response = await fetch(urlToFetch, {
@@ -13,9 +23,9 @@ export async function getPopular() {
             const jsonResponse = await response.json();
             const popular = jsonResponse.data.children;
             return popular;
-        } 
+        }
+        throw new Error('Network response was not ok');
     } catch (error) {
-        console.log("popular is NOT Loading:");
         console.log(error);
     }
 };
@@ -42,7 +52,7 @@ export async function getPopular() {
 
 export async function getTopics() {
     const topicsEndpoint = `/reddits.json`;
-    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+    const urlToFetch = getFetchUrl(topicsEndpoint);
 
     try {
         const response = await fetch(urlToFetch, {
@@ -55,6 +65,7 @@ export async function getTopics() {
             
             return topics;
         }
+        throw new Error('Network response was not ok');
     } catch (error) {
         console.log(error);
     }
@@ -62,7 +73,7 @@ export async function getTopics() {
 
 export async function getPostBasedOnTopic(topic) {
     const topicsEndpoint = `/${topic}.json`;
-    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+    const urlToFetch = getFetchUrl(topicsEndpoint);
 
     try {
         const response = await fetch(urlToFetch, {
@@ -75,6 +86,7 @@ export async function getPostBasedOnTopic(topic) {
             
             return topics;
         }
+        throw new Error('Network response was not ok');
     } catch (error) {
         console.log(error);
     }
@@ -82,7 +94,7 @@ export async function getPostBasedOnTopic(topic) {
 
 export async function getSearch(userSearch) {
     const topicsEndpoint = `/search.json?q=${userSearch}`;
-    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+    const urlToFetch = getFetchUrl(topicsEndpoint);
 
     try {
         const response = await fetch(urlToFetch, {
@@ -95,6 +107,7 @@ export async function getSearch(userSearch) {
             
             return topics;
         }
+        throw new Error('Network response was not ok');
     } catch (error) {
         console.log(error);
     }
@@ -102,7 +115,7 @@ export async function getSearch(userSearch) {
 
 export async function getCommentListForPost(subreddit, postId) {
     const topicsEndpoint = `/${subreddit}/comments/${postId}.json`;
-    const urlToFetch = `${appBaseURL}${topicsEndpoint}`;
+    const urlToFetch = getFetchUrl(topicsEndpoint);
 
     try {
         const response = await fetch(urlToFetch, {
@@ -115,6 +128,7 @@ export async function getCommentListForPost(subreddit, postId) {
             
             return {postId, comments};
         }
+        throw new Error('Network response was not ok');
     } catch (error) {
         console.log(error);
     }
