@@ -70,3 +70,35 @@
         width: 28rem;
     }
 }
+
+@media only screen and (max-width: 652px) {
+    .searchBarComp {
+        width: 23rem;
+    }
+}
+
+@media only screen and (max-width: 579px) {
+    .searchBarComp {
+        width: 19rem;
+    }
+
+    .logo {
+        margin-left: 0.3rem;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .searchBarComp {
+        width: 15rem;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .searchBarComp {
+        width: 10rem;
+    }
+
+    .logo img {
+        height: 2rem;
+    }
+}

@@ -74,7 +74,6 @@ function Post({post, collectPostIdAndSubreddit}) {
                 </div>
             );
         } else if ((post.data.thumbnail === "self") && (typeof post.data.selftext === "string")) {
-            console.log("markdown stuff", post.data);
             postData = (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {post.data.selftext}

@@ -3,7 +3,7 @@
     position: sticky;
     top: 3rem;
     padding: 0.2rem 1rem;
-    width: 17%;
+    min-width: 26%;
     height: 100vh;
     flex-direction: column;
     overflow-y: scroll;
@@ -89,7 +89,7 @@
     position: sticky;
     top: 3rem;
     padding: 0.2rem 1rem;
-    width: 17%;
+    min-width: 26%;
     height: 100vh;
     flex-direction: column;
     overflow-y: scroll;
@@ -144,6 +144,7 @@
     .topics, .topicsDarkMode {
         padding: 0.2rem 0.5rem;
         width: 30%;
+        
     }
 
     .eachMainTopics, .eachMainTopicsDarkMode {
@@ -160,26 +161,6 @@
     }
 
     .topicsDropDownDarkMode {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        margin: 1.5rem 0.5rem 0rem 0.5rem;
-        border-radius: 0.7rem;
-    }
-}
-
-@media only screen and (max-width: 884px) {
-    .topics, .topicsDarkMode {
-        padding: 0.2rem 0.5rem;
-        width: 20%;
-    }
-
-    .eachMainTopics, .eachMainTopicsDarkMode {
-        margin: 0.5rem 0.5rem 1rem 0.5rem;
-    }
-
-    .topicsDropDown {
         display: flex;
         align-items: center;
         justify-content: space-between;

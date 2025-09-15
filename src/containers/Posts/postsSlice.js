@@ -5,7 +5,7 @@ export const loadPopular = createAsyncThunk(
     'posts/loadPopular',
     async () =>  {
         const popularObj = await getPopular();
-        console.log("popobj", popularObj);
+        //console.log("popobj", popularObj);
         return popularObj
     }
 );

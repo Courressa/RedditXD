@@ -10,6 +10,7 @@
     background-color: rgb(196, 196, 196);
     height: 35rem;
     overflow-y: scroll;
+    overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: rgb(226, 226, 226) rgba(196, 196, 196, 0);
     list-style: inside;
@@ -81,6 +82,7 @@
     background-color: rgb(83, 83, 83);
     height: 35rem;
     overflow-y: scroll;
+    overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: rgb(175, 175, 175) rgba(196, 196, 196, 0);
     list-style: inside;
@@ -99,4 +101,10 @@
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
     padding: 1.5rem;
+}
+
+@media only screen and (max-width: 884px) {
+    .headComment {
+        margin: 1rem 4.5rem;
+    }
 }

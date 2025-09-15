@@ -180,3 +180,29 @@
 .menuActiveDarkMode {
     background-color: rgb(77, 77, 77);
 }
+
+@media only screen and (max-width: 579px) {
+    .menu, .menuDarkMode {
+        width: 2.2rem;
+        height: 100%;
+        margin-right: 0.3rem;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .menu, .menuDarkMode {
+        width: 2rem;
+    }
+
+    .arrow, .arrowDarkMode, .arrowDownClicked, .arrowUpClicked, .arrowDownClickedDarkMode, .arrowUpClickedDarkMode {
+        width: 1.9rem;
+    }
+
+    .comment {
+        width: 1.3rem;
+    }
+
+    .search {
+        width: 1.3rem;
+    }
+}

@@ -149,3 +149,18 @@
     font-weight: 400;
     margin-left: 1rem;
 }
+
+@media only screen and (max-width: 632px) {
+    .menu, .menuDarkMode {
+        left: 45%;
+        width: 55%;
+        height: 30rem;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .menu, .menuDarkMode {
+        left: 35%;
+        width: 65%;
+    }
+}
