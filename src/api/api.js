@@ -1,5 +1,3 @@
-const appBaseURL = "https://www.reddit.com";
-
 // Helper to get the fetch URL based on environment
 const getFetchUrl = (endpoint) => {
   if (process.env.NODE_ENV === 'development') {
@@ -30,7 +28,9 @@ export async function getPopular() {
     }
 };
 
-/*export async function getRedditGalleryImage(image) {
+/*
+const appBaseURL = "https://www.reddit.com";
+export async function getRedditGalleryImage(image) {
     const RedditGalleryImageEndpoint = `${image}.json`;
     const urlToFetch = `${RedditGalleryImageEndpoint}`;
 
