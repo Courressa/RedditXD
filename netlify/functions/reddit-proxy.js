@@ -9,25 +9,31 @@ exports.handler = async (event) => {
     };
   }
 
-  // Use OAuth base URL
-  const oauthUrl = `https://oauth.reddit.com${path}`;
-  const token = process.env.REDDIT_ACCESS_TOKEN; // From Netlify env vars
-  console.log('Fetching from OAuth Reddit:', oauthUrl);
+  const redditUrl = `https://www.reddit.com${path}`;
+  console.log('Fetching from Reddit:', redditUrl);
 
   try {
-    const response = await fetch(oauthUrl, {
+    const response = await fetch(redditUrl, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'User-Agent': 'MyRedditApp/1.0 (by /u/Only-Conversation417)' // Your Reddit username
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', // Browser UA
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Referer': 'https://www.reddit.com/', // Mimic from Reddit site
+        'Origin': 'https://www.reddit.com',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-origin'
       }
     });
-    console.log('OAuth Reddit response status:', response.status);
+    console.log('Reddit response status:', response.status);
 
     if (!response.ok) {
+      console.log('Reddit fetch failed with status:', response.status);
       return {
         statusCode: response.status,
-        body: JSON.stringify({ error: 'Failed to fetch from Reddit API' })
+        body: JSON.stringify({ error: 'Failed to fetch from Reddit' })
       };
     }
 
