@@ -1,11 +1,11 @@
 // Helper to get the fetch URL based on environment
 const getFetchUrl = (endpoint) => {
-  if (process.env.NODE_ENV === 'development') {
-    return endpoint; // Uses package.json proxy for local dev
-  }
-  // Production: Use Netlify Function with encoded path
-  const encodedPath = encodeURIComponent(endpoint);
-  return `/.netlify/functions/reddit-proxy?path=${encodedPath}`;
+    if (process.env.NODE_ENV === 'development') {
+        return endpoint; // Uses package.json proxy for local dev
+    }
+    // Production: Use Netlify Function with encoded path
+    const encodedPath = encodeURIComponent(endpoint);
+    return `/.netlify/functions/reddit-proxy?path=${encodedPath}`;
 };
 
 export async function getPopular() {
@@ -25,7 +25,6 @@ export async function getPopular() {
         throw new Error('Network response was not ok');
     } catch (error) {
         console.log(error);
-        throw error; // Re-throw so thunk rejects and it does not continuously loads
     }
 };
 
@@ -69,7 +68,6 @@ export async function getTopics() {
         throw new Error('Network response was not ok');
     } catch (error) {
         console.log(error);
-        throw error;
     }
 };
 
@@ -91,7 +89,6 @@ export async function getPostBasedOnTopic(topic) {
         throw new Error('Network response was not ok');
     } catch (error) {
         console.log(error);
-        throw error;
     }
 };
 
@@ -113,7 +110,6 @@ export async function getSearch(userSearch) {
         throw new Error('Network response was not ok');
     } catch (error) {
         console.log(error);
-        throw error;
     }
 };
 
@@ -135,6 +131,5 @@ export async function getCommentListForPost(subreddit, postId) {
         throw new Error('Network response was not ok');
     } catch (error) {
         console.log(error);
-        throw error;
     }
 };

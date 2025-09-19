@@ -18,17 +18,18 @@ function Posts() {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        if (!postLoading) {
+        // Only dispatch if no error, not loading, and no data
+        if (!postError && !postLoading && (!postData || postData.length === 0)) {
             if (sendUserSearch && sendUserSearch.trim() !== '') {
                 dispatch(loadUserSearch(sendUserSearch));
-            } else if (selectedTopics && selectedTopics.trim() !== '') {
+            } else if (selectedTopics) {
                 dispatch(loadSelectedTopicPost(selectedTopics));
-            } else if (!postData || postData.length === 0) {
+            } else {
                 dispatch(loadPopular());
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dispatch, postLoading, sendUserSearch, selectedTopics, userSearchClickPing, mainTopicClickPing]);
+    }, [dispatch, postError, postLoading, sendUserSearch, selectedTopics, userSearchClickPing, mainTopicClickPing]);
 
     const collectedPostIdAndSubreddit = (postSubreddit, postId) => {
         dispatch(loadComments({ subreddit: postSubreddit, postId }));
