@@ -14,28 +14,22 @@ function Posts() {
     const selectedTopics = useSelector(selectTopics);
     const sendUserSearch = useSelector(selectUserSearch);
     const userSearchClickPing = useSelector(selectUserSearchClick);
-    const MainTopicClickPing = useSelector(selectMainTopicsClick);
+    const mainTopicClickPing = useSelector(selectMainTopicsClick);
     const dispatch = useDispatch();
     
     
-    useEffect(() => {
-        if (selectedTopics) {
-            dispatch(loadSelectedTopicPost(selectedTopics));
-        } else {
-            dispatch(loadPopular());
-        }
-        
-    }, [MainTopicClickPing, selectedTopics, dispatch]);
-
-    useEffect(() => {
-        if (sendUserSearch) {
-            dispatch(loadUserSearch(sendUserSearch));
-        } else {
-            dispatch(loadPopular());
-        }
-        
-    }, [userSearchClickPing, sendUserSearch, dispatch]);
-
+   useEffect(() => {
+    // Only fetch if no posts are loaded and posts are not in loading state
+    if (!postData.length && !postLoading) {
+      if (sendUserSearch) {
+        dispatch(loadUserSearch(sendUserSearch)); //Search takes priority
+      } else if (selectedTopics) {
+        dispatch(loadSelectedTopicPost(selectedTopics)); //Then topic
+      } else {
+        dispatch(loadPopular()); //Fallback to popular
+      }
+    }
+  }, [dispatch, postData.length, postLoading, sendUserSearch, selectedTopics, userSearchClickPing, mainTopicClickPing]);
     
 
     const collectedPostIdAndSubreddit = (postSubreddit, postId) => {
