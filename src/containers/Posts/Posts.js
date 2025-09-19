@@ -19,30 +19,30 @@ function Posts() {
     
     
    useEffect(() => {
-    // Only fetch if no posts are loaded and posts are not in loading state
-    if (!postData.length && !postLoading) {
-      if (sendUserSearch) {
-        dispatch(loadUserSearch(sendUserSearch)); //Search takes priority
-      } else if (selectedTopics) {
-        dispatch(loadSelectedTopicPost(selectedTopics)); //Then topic
+    // Only dispatch if not loading and no data
+    if (!postLoading && (!postData || postData.length === 0)) {
+      if (sendUserSearch && sendUserSearch.trim() !== '') {
+        dispatch(loadUserSearch(sendUserSearch)); // Priority: Search
+      } else if (selectedTopics && selectedTopics.trim() !== '') {
+        dispatch(loadSelectedTopicPost(selectedTopics)); // Then topic
       } else {
-        dispatch(loadPopular()); //Fallback to popular
+        dispatch(loadPopular()); // Fallback: Popular
       }
     }
-  }, [dispatch, postData.length, postLoading, sendUserSearch, selectedTopics, userSearchClickPing, mainTopicClickPing]);
-    
+  }, [dispatch, postLoading, postData?.length, sendUserSearch, selectedTopics, userSearchClickPing, mainTopicClickPing]);
 
     const collectedPostIdAndSubreddit = (postSubreddit, postId) => {
         dispatch(loadComments({ subreddit: postSubreddit, postId }));
     };
 
+    //Check if loading, then if there is error, no postdata or postData is not an array/undefined
     if (postLoading) {
         return (
             <div className={styles.loadingOrError}>
                 <LoadingIcon />
             </div>
         )
-    } else if (postError || !postData) {
+    } else if (postError || !postData || !Array.isArray(postData)) {
         return (
             <div className={styles.loadingOrError}>
                 <h2>
