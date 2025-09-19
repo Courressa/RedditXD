@@ -29,7 +29,7 @@ function Posts() {
         dispatch(loadPopular()); // Fallback: Popular
       }
     }
-  }, [dispatch, postLoading, postData?.length, sendUserSearch, selectedTopics, userSearchClickPing, mainTopicClickPing]);
+  }, [dispatch, postLoading, postData?.length, sendUserSearch, selectedTopics, userSearchClickPing, mainTopicClickPing, postData]);
 
     const collectedPostIdAndSubreddit = (postSubreddit, postId) => {
         dispatch(loadComments({ subreddit: postSubreddit, postId }));
