@@ -9,22 +9,18 @@ exports.handler = async (event) => {
     };
   }
 
-  const redditUrl = `https://www.reddit.com${path}`;
+  const redditUrl = `https://api.reddit.com${path}`; // Switch to api.reddit.com to avoid 403 blocks
   console.log('Fetching from Reddit:', redditUrl);
 
   try {
     const response = await fetch(redditUrl, {
       method: 'GET',
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', // Browser UA
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', // Browser UA to mimic client
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-US,en;q=0.9',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Referer': 'https://www.reddit.com/', // Mimic from Reddit site
-        'Origin': 'https://www.reddit.com',
-        'Sec-Fetch-Dest': 'empty',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Site': 'same-origin'
+        'Referer': 'https://www.reddit.com/',
+        'Origin': 'https://www.reddit.com'
       }
     });
     console.log('Reddit response status:', response.status);
