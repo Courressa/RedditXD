@@ -3,33 +3,40 @@ exports.handler = async (event) => {
 
   const { path } = event.queryStringParameters;
   if (!path) {
+    console.log('Missing path parameter');
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Missing path parameter' })
     };
   }
 
-  const redditUrl = `https://api.reddit.com${path}`; // Switch to api.reddit.com to avoid 403 blocks
-  console.log('Fetching from Reddit:', redditUrl);
+  const oauthUrl = `https://oauth.reddit.com${path}`;
+  const token = process.env.REDDIT_ACCESS_TOKEN; // From Netlify env var
+  if (!token) {
+    console.error('Missing Reddit access token');
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Server configuration error' })
+    };
+  }
+
+  console.log('Fetching from OAuth Reddit:', oauthUrl);
 
   try {
-    const response = await fetch(redditUrl, {
+    const response = await fetch(oauthUrl, {
       method: 'GET',
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', // Browser UA to mimic client
-        'Accept': 'application/json, text/plain, */*',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Referer': 'https://www.reddit.com/',
-        'Origin': 'https://www.reddit.com'
+        'Authorization': `Bearer ${token}`,
+        'User-Agent': 'MyRedditApp/1.0 (by /u/Only-Conversation417)' // Your username
       }
     });
-    console.log('Reddit response status:', response.status);
+    console.log('OAuth Reddit response status:', response.status);
 
     if (!response.ok) {
-      console.log('Reddit fetch failed with status:', response.status);
+      console.log('OAuth fetch failed with status:', response.status);
       return {
         statusCode: response.status,
-        body: JSON.stringify({ error: 'Failed to fetch from Reddit' })
+        body: await response.text() // Return Reddit's error message for debugging
       };
     }
 
