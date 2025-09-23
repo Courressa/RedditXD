@@ -1,6 +1,6 @@
 .post {
     transition: all 1s;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(245, 245, 245);
     padding: 2rem;
     justify-items: center;
     border-bottom: 0.01rem solid rgb(177, 177, 177);
@@ -11,6 +11,8 @@
     height: 100%;
     margin: 1rem;
     width: 50rem;
+    overflow-wrap: break-word;
+    align-self: center;
 }
 
 .fetchedCommentsBkgdDrop {
@@ -26,6 +28,7 @@
 .media, .mediaDarkMode {
     padding: 3rem;
     list-style-position: inside;
+    width: 44rem;
 }
 
 .media p, .mediaDarkMode p {
@@ -63,6 +66,7 @@
 
 .richVideo img {
     margin-bottom: 1rem;
+    align-self: center;
 }
 
 .postHeader, .postBody {
@@ -116,7 +120,6 @@
     text-align: right;
     width: 100%;
     align-self: self-end;
-    overflow-wrap: break-word;
 }
 
 /*Dark Mode*/
@@ -193,6 +196,10 @@
     .postInfo {
         width: 45rem;
     }
+
+    .media, .mediaDarkMode {
+        width: 39rem;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -206,6 +213,11 @@
     .postInfo {
         width: 33rem;
     }
+
+    .media, .mediaDarkMode {
+        padding: 3rem 0rem;
+        width: 27rem;
+    }
 }
 
 @media only screen and (max-width: 470px) {
@@ -216,7 +228,6 @@
     .media, .mediaDarkMode {
         padding: 1.5rem 1rem;
         width: 22rem;
-        overflow-wrap: break-word;
     }
     .media img, .mediaDarkMode img, .media video, .mediaDarkMode video, .media a, .mediaDarkMode a {
         width: 20rem;
