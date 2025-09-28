@@ -74,7 +74,7 @@ export async function getTopics() {
 };
 
 export async function getPostBasedOnTopic(topic) {
-    const topicsEndpoint = `/${topic}.json`;
+    const topicsEndpoint = `${topic}.json`; //No leading slash '/' as topic parameter comes with its own
     const urlToFetch = getFetchUrl(topicsEndpoint);
 
     try {
