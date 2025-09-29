@@ -1,4 +1,4 @@
-# <p align="center">RedditXD</p>
+# <p align="center">🎞️RedditXD🎞️</p>
 
 <p align="center">RedditXD is a website created based on Reddit where people share links to articles, media and other things on the web. It was created by utilizing React and Redux and integrated with data retrieved from the Reddit API.</p>
 
