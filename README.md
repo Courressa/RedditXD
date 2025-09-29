@@ -75,4 +75,3 @@
 </div>
 <br>
 <br>
-<p align="center">The background image is by <a href="https://pixabay.com/users/placidplace-25572496/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7849579">Peace,love,happiness</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7849579">Pixabay</a></p> 
