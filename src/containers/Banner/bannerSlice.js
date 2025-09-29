@@ -20,6 +20,9 @@ export const bannerSlice = createSlice({
         },
         collectmenuDropdownClick: (state) => {
             state.menuDropdown = !state.menuDropdown;
+        },
+        resetUserSearch: (state) => {
+            state.userSearch = "";
         }
     }
 });
@@ -28,6 +31,6 @@ export const selectUserSearch = (state) => state.banner.userSearch;
 export const selectUserSearchClick = (state) => state.banner.userSearchClick;
 export const selectMenuDropdownClick = (state) => state.banner.menuDropdown;
 
-export const { collectUserSearch, collectUserSearchClick, collectmenuDropdownClick } = bannerSlice.actions;
+export const { collectUserSearch, collectUserSearchClick, collectmenuDropdownClick, resetUserSearch } = bannerSlice.actions;
 
 export default bannerSlice.reducer;

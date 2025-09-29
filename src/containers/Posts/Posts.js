@@ -26,7 +26,7 @@ function Posts() {
         } else if (!postData || postData.length === 0) {
             dispatch(loadPopular());
         }
-        
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, sendUserSearch, selectedTopics, userSearchClickPing, mainTopicClickPing]);
 

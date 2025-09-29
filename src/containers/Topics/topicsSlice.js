@@ -27,6 +27,9 @@ export const topicsSlice = createSlice({
                 state.mainTopicClick = false;
             }
             
+        },
+        resetSelectedTopic: (state) => {
+            state.sendTopics = "";
         }
     }, 
     extraReducers: (builder) => {
@@ -57,5 +60,5 @@ export const selectMainTopicsClick = (state) => state.topics.mainTopicClick;
 
 export const selectListTopics = (state) => state.topics.listTopics;
 
-export const { collectFetchTopic, collectMainTopicClick } = topicsSlice.actions;
+export const { collectFetchTopic, collectMainTopicClick, resetSelectedTopic } = topicsSlice.actions;
 export default topicsSlice.reducer;

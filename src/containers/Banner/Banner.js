@@ -5,6 +5,7 @@ import { SearchBar } from "../../features/SearchBar/SearchBar";
 import { ModeSetter } from "../../features/ModeSetter/ModeSetter";
 import { Menu } from "../../features/svg_icons/Menu";
 import { collectUserSearch, collectUserSearchClick, collectmenuDropdownClick, selectMenuDropdownClick } from "./bannerSlice";
+import { resetSelectedTopic } from "../Topics/topicsSlice";
 import styles from "./Banner.module.css";
 
 function Banner({darkModeSwitch}) {
@@ -17,6 +18,7 @@ function Banner({darkModeSwitch}) {
 
     const userSearchClick = () => {
         dispatch(collectUserSearchClick());
+        dispatch(resetSelectedTopic()); //Clears topic to avoid conflict with useEffect in Posts.js
     };
 
     const menuDropdownClick = () => {

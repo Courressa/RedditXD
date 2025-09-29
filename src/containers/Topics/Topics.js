@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectListTopics, collectFetchTopic, loadTopics, collectMainTopicClick } from "./topicsSlice";
+import { resetUserSearch } from "../Banner/bannerSlice";
 import { Topic } from "../../features/Topic/Topic";
 import { Home } from "../../features/svg_icons/Home";
 import { Popular } from "../../features/svg_icons/Popular";
@@ -14,6 +15,7 @@ function Topics({darkModeSwitch}) {
     const collectSelectedTopic = (topic) => {
         dispatch(collectFetchTopic(topic));
         dispatch(collectMainTopicClick());
+        dispatch(resetUserSearch()); //Clears search to avoid conflict with useEffect in Posts.js
     };
 
     useEffect(() => {
